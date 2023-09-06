@@ -2,7 +2,6 @@ import home from './components/home.js';
 import login from './components/login.js';
 import error from './components/error.js';
 import newUser from './components/NewUserForm.js';
-// eslint-disable-next-line import/no-named-as-default
 import preferences from './components/preferences.js';
 
 const root = document.getElementById('root');
@@ -37,4 +36,5 @@ function navigateTo(hash) {
 window.onpopstate = () => {
   navigateTo(window.location.pathname);
 };
+
 navigateTo(window.location.pathname || defaultRoute);

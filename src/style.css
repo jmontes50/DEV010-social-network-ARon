@@ -1,3 +1,9 @@
+/*Generales*/
+
+*{
+    font-family: 'Kiwi Maru', serif;
+}
+
 body{
     background: linear-gradient(#5CB3C1, #01587A);
 }
@@ -14,17 +20,7 @@ main{
 h2{
     text-align: center;
     color: #01587A;
-}
-#register {
-    list-style-type: none;
-    padding-inline-start: 5%;
-
-}
-
-li{
-    display: flex;
-    justify-content: center;
-    margin-top: 1rem;
+    font-size: medium;
 }
 
 #root{
@@ -33,22 +29,93 @@ li{
     align-content: center;
 }
 
+/*De las pantallas de login, inscripcion, etc*/
+/*inscripción*/
+
+#logo{
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    margin-top: 17%;
+    margin-left: 14%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+li{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+input{
+    width: 75%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+#register {
+    list-style-type: none;
+    padding-inline-start: 0%;
+}
+
 button{
     display:flex;
     text-align: center;
-    border-radius: 10%;
+    border-radius: 15%;
+    margin-top: 1rem;
+    background: linear-gradient(#5CB3C1, #01587A);
+    color:#F8F9F9;
+    padding: 0.5rem; 
 }
 
+/*preferences*/
+
+#logo2{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+    margin-left: 30%;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+#pref{
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-top: -1 rem;
+    display: flex;
+    flex-direction: column;
+    margin-top: 0rem;
+}
 .ask{
-    width: 100%;
-    color:#0d80ad;
+    background:#e1e8ec;
+    color:#01587A;
     text-align: center;
-    padding:2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     border-radius:10%;
-    background-color:rgba(1,88,122,0.1);
-    border-color:rgba(1,88,122,0.01);
+    font-size: smaller;
+    display: flex;
+    flex-direction: row;
+    border:none;
+    width: 100%;
 }
 
 .ask:hover{
     background-color: #5CB3C1;
+}
+
+.options {
+    padding-left: 1rem;
+}
+
+.icon {
+    display:flex;
+    margin-top:2px;
+    margin-left:2px;
+    width:40px;
+    height:40px;
 }

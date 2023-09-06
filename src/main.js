@@ -1,5 +1,7 @@
-// Este es el punto de entrada de tu aplicacion
+import home from './Components/home.js';
 
-import { myFunction } from './lib/index.js';
+// crear una arreglo para guardar ahí las rutas del SPA
 
-myFunction();
+// crear una ruta por defecto "/"
+
+

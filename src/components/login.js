@@ -1,4 +1,7 @@
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  getAuth, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword,
+} from 'firebase/auth';
+
 import firebaseApp from './firebase.js';
 
 function login(navigateTo) {
@@ -34,8 +37,8 @@ function login(navigateTo) {
     const password = passwordInput.value;
 
     try {
-      const auth = getAuth(firebaseApp);
-      await signInWithEmailAndPassword(auth, email, password);
+      const Auth = getAuth(firebaseApp);
+      await signInWithEmailAndPassword(Auth, email, password);
       // poner que la autenticacion fue existosa
       console.log('Inicio de sesion exitoso');
     } catch (error) {
@@ -51,6 +54,21 @@ function login(navigateTo) {
   googleSignInLink.setAttribute('href', '/auth/google'); // poner url
 
   googleSignInOption.appendChild(googleSignInLink);
+
+  googleSignInLink.addEventListener('click', async (e) => {
+    e.preventDefault(); // evita que el enlace cambie de pagina (usamos "#" como href)
+    try {
+      const auth = getAuth(firebaseApp);
+      const provider = new GoogleAuthProvider();
+
+      // Inicia sesion con Google utilizando SignInWithPopup
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      console.log('Inicio de sesion con Google exitoso:', user);
+    } catch (error) {
+      console.error('Error al iniciar sesion con Google:', error);
+    }
+  });
 
   // poner todos los elmentos en el section
   section.append(

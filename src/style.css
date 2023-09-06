@@ -4,17 +4,51 @@ body{
 
 main{
     background-color: #F8F9F9;
-    border-radius: 15%;
+    border-radius: 5%;
     min-height: 600px;
     margin: 2rem;
     display: flex;
+    justify-content: center;
+}
+
+h2{
+    text-align: center;
+    color: #01587A;
+}
+#register {
+    list-style-type: none;
+    padding-inline-start: 5%;
+
 }
 
 li{
-    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
 }
 
-#register {
-    list-style-type: none;
-    margin: auto;
+#root{
+    display:flex;
+    justify-content: center;
+    align-content: center;
+}
+
+button{
+    display:flex;
+    text-align: center;
+    border-radius: 10%;
+}
+
+.ask{
+    width: 100%;
+    color:#0d80ad;
+    text-align: center;
+    padding:2rem;
+    border-radius:10%;
+    background-color:rgba(1,88,122,0.1);
+    border-color:rgba(1,88,122,0.01);
+}
+
+.ask:hover{
+    background-color: #5CB3C1;
 }

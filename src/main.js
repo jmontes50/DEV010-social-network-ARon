@@ -1,6 +1,8 @@
 import home from './components/home.js';
 import login from './components/login.js';
 import error from './components/error.js';
+import newUser from './components/NewUserForm.js';
+import preferences from './components/preferences.js';
 
 const root = document.getElementById('root');
 
@@ -8,7 +10,10 @@ const routes = [
   { path: '/', component: home },
   { path: '/login', component: login },
   { path: '/error', component: error },
+  { path: '/newUser', component: newUser },
+  { path: '/preferences', component: preferences },
 ];
+
 const defaultRoute = '/';
 
 function navigateTo(hash) {
@@ -31,4 +36,5 @@ function navigateTo(hash) {
 window.onpopstate = () => {
   navigateTo(window.location.pathname);
 };
+
 navigateTo(window.location.pathname || defaultRoute);

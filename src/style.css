@@ -6,6 +6,7 @@
 
 body{
     background: linear-gradient(#5CB3C1, #01587A);
+    background-repeat: no-repeat;
 }
 
 main{
@@ -36,7 +37,7 @@ h2{
     width: 70%;
     display: flex;
     justify-content: center;
-    margin-top: 17%;
+    margin-top: 5%;
     margin-left: 14%;
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -68,6 +69,7 @@ button{
     background: linear-gradient(#5CB3C1, #01587A);
     color:#F8F9F9;
     padding: 0.5rem; 
+    margin-bottom: 2rem;
 }
 
 /*preferences*/

@@ -1,5 +1,4 @@
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import firebaseApp from './firebase.js';
 
 function login(navigateTo) {
   const section = document.createElement('section');
@@ -21,7 +20,7 @@ function login(navigateTo) {
   signUpLink.setAttribute('href', 'registro'); // hay que poner la url
 
   const forgotPasswordLink = document.createElement('a');
-  forgotPasswordLink.textContent = '¿olvidasete tu contraseña?';
+  forgotPasswordLink.textContent = '¿olvidaste tu contraseña?';
   forgotPasswordLink.setAttribute('href', '/recuperar-contraseña');// poner url
 
   // crear boton de inicio de sesion

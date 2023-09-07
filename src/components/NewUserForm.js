@@ -1,3 +1,6 @@
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from './firebase.js';
+
 function newUser() {
   const newUserForm = document.createElement('section');
 
@@ -29,13 +32,30 @@ function newUser() {
     }
 
     // Crear un objeto con los valores capturados
+
+    const userEmail = email;
+    const userPassword = password;
     const userData = {
       name,
       email,
       password,
     };
 
-    console.log(userData);
+    /* console.log(userData);
+    console.log(userEmail);
+    console.log(userPassword); */
+
+    createUserWithEmailAndPassword(auth, userEmail, userPassword)
+      .then((userCredential) => {
+      // Signed in
+        const user = userCredential.user;
+      // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      // ..
+      });
 
     registerForm.reset();
   });

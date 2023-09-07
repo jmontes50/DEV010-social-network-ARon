@@ -21,8 +21,8 @@ function login(navigateTo) {
   signUpLink.setAttribute('href', 'registro'); // hay que poner la url
 
   const forgotPasswordLink = document.createElement('a');
-  forgotPasswordLink.textContent = '¿olvidasete tu contraseña?';
-  forgotPasswordLink.setAttribute('href', '/recuperar-contraseña');// poner url
+  forgotPasswordLink.textContent = '¿Olvidaste tu contraseña?';
+  forgotPasswordLink.setAttribute('href', '/recover');// poner url
 
   // crear boton de inicio de sesion
   const loginButton = document.createElement('button');

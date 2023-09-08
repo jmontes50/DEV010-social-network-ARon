@@ -4,6 +4,9 @@ import firebaseApp from './firebase.js';
 const auth = getAuth(firebaseApp);
 
 function recover() {
+  const logo = document.createElement('img');
+  logo.setAttribute('src', 'assets/logo256.png');
+
   const section = document.createElement('section');
   const title = document.createElement('h2');
   title.textContent = 'Recuperar contraseña';
@@ -30,7 +33,7 @@ function recover() {
   });
 
   // Mostrar los elementos creados
-  section.append(title, emailRecover, btnSendEmail);
+  section.append(logo, title, emailRecover, btnSendEmail);
   return section;
 }
 

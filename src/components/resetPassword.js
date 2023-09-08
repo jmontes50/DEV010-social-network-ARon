@@ -4,6 +4,9 @@ import firebaseApp from './firebase';
 const auth = getAuth(firebaseApp);
 
 function resetPassword() {
+  const logo = document.createElement('img');
+  logo.setAttribute('src', 'assets/logo256.png');
+
   const section = document.createElement('section');
   const title = document.createElement('h2');
   title.textContent = 'Reiniciar contraseña';
@@ -20,17 +23,36 @@ function resetPassword() {
 
   const btnShowPass = document.createElement('button');
   btnShowPass.setAttribute('id', 'btnShowPass');
-
+  btnShowPass.classList = 'buttonsShowHidePassword';
+  btnShowPass.style.backgroundImage = 'url(assets/shutEye.png)';
 
   const btnNewPass = document.createElement('button');
   btnNewPass.setAttribute('id', 'btnNewPassword');
   btnNewPass.textContent = 'Reiniciar contraseña';
 
+  btnShowPass.addEventListener('click', () => {
+    if (newPass.type === 'password' || confirmPass.type === 'password') {
+      newPass.type = 'text';
+      confirmPass.type = 'text';
+      btnShowPass.style.backgroundImage = 'url(assets/openEye.png)';
+    } else {
+      newPass.type = 'password';
+      confirmPass.type = 'password';
+      btnShowPass.style.backgroundImage = 'url(assets/shutEye.png)';
+    }
+  });
+
   btnNewPass.addEventListener('click', async () => {
+    if (newPass.value === '' || confirmPass.value === '') {
+      console.log('Por favor escribe tu nueva contraseña');
+      return;
+    }
     if (newPass.value !== confirmPass.value) {
       console.log('Contraseñas no coinciden');
-      newPass.value = '';
-      confirmPass.value = '';
+      return;
+    }
+    if (newPass.value.length < 6) {
+      console.log('La contraseña tiene que tener más de 6 caracteres');
       return;
     }
     try {
@@ -41,7 +63,7 @@ function resetPassword() {
     }
   });
 
-  section.append(title, newPass, confirmPass, btnNewPass);
+  section.append(logo, title, newPass, confirmPass, btnShowPass, btnNewPass);
   return section;
 }
 

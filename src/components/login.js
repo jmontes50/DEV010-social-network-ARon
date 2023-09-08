@@ -110,6 +110,7 @@ function login(navigateTo) {
     }
   });
 
+  
   // poner todos los elmentos en el section
   section.append(
     logo,

@@ -5,16 +5,16 @@ export function preferences() {
        <h2 id="Why">Porqué estás aqui?</h2>
         <form id="userForm">
             <ul id="pref">
-            <li><button id="teacher" value="teacher" class="ask" name="userType">
+            <li class="liPref"><button id="teacher" value="teacher" class="ask" name="userType">
               <img src= "img/teacher.png" class="icon">
               <p class="options"> Soy profesor frente a grupo, quiero aportar y recibir ideas </p></button> </li>
-            <li><button id="kidsTeacher" value="kids" class="ask" name="userType">
+            <li class="liPref"><button id="kidsTeacher" value="kids" class="ask" name="userType">
               <img src= "img/books.png"  class="icon">
               <p class="options">Soy pedagogo, quiero aportar y recibir ideas</li>
-            <li><button id="creative" value="creator" class="ask" name="userType">
+            <li class="liPref"><button id="creative" value="creator" class="ask" name="userType">
               <img src= "img/creativity.png" class="icon">
               <p class="options">Solo vengo por inspiración</button></li>
-            <li><button id="artist" value="artist" class="ask" name="userType"> 
+            <li class="liPref"><button id="artist" value="artist" class="ask" name="userType"> 
               <img src= "img/inspiration.png" class="icon">
               <p class="options">Soy arte educador/mediador, quiero aportar y recibir ideas</button></li>
             </ul>

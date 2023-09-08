@@ -49,6 +49,8 @@ li{
     display: flex;
     justify-content: center;
     margin-top: 1rem;
+    align-items: center;
+    
 }
 
 input{
@@ -56,13 +58,16 @@ input{
     border-top: none;
     border-left: none;
     border-right: none;
-    margin-bottom: 1rem; /* Espacio entre el input y el botón */
+
+
 }
 
 #register {
     list-style-type: none;
     padding-inline-start: 0%;
+   
 }
+
 
 button{
     display:flex;
@@ -134,15 +139,16 @@ font-size: large;
 
 
 .forgot-password{
-    font-size: small; 
-    margin-right: 90px
-  
+    font-size: .6rem;
+    margin-left: 15%;
+    
 
 }
 
 .sign-up{
-    font-size: small;
-    margin:60px
+    font-size: .6rem;
+    margin-right: 15%;
+    
 }
 
 .login-button{
@@ -156,6 +162,9 @@ font-size: large;
   border: 0px;
   width: 24px;
   height: 24px;
+ 
+  margin-left:12% ;
+  
   
 }
 

@@ -1,18 +1,18 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from './firebase.js';
 
-function newUser(navigateTo) {
+function newUser() {
   const newUserForm = document.createElement('section');
 
-  newUserForm.innerHTML = `<img src=""></img>
+  newUserForm.innerHTML = `<img id="logo" src= "img/logo.png">
    <h2 id="title">Nuevos usuarios</h2>
-    <form>
+    <form id="newUserUl">
         <ul id="register">
-        <li><input id="name" placeholder="Nombre" required></li>
-        <li><input id="email" placeholder="E-mail" required></li>
-        <li><input id="password" placeholder="Contraseña" required></li>
-        <li><input id="repeatPass" placeholder="Repetir contraseña" required></li>
-        <li><button id="registerSummit">Registrar</button></li>
+        <li><input id="name" type="text" placeholder="Nombre" required></li>
+        <li><input id="email" type="email" placeholder="E-mail" required></li>
+        <li><input id="password" type="password" placeholder="Contraseña" required></li>
+        <li><input id="repeatPass" type="password" placeholder="Repetir contraseña" required></li>
+        <li><button  id="registerSummit" type="submit">Registrar</button></li>
         </ul>
     </form>`;
 
@@ -58,8 +58,6 @@ function newUser(navigateTo) {
       });
 
     registerForm.reset();
-
-    window.location.href = '/preferences';
   });
 
   return newUserForm;

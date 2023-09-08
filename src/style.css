@@ -6,7 +6,8 @@
 
 body{
     background: linear-gradient(#5CB3C1, #01587A);
-    background-repeat: no-repeat;
+
+  
 }
 
 main{
@@ -16,6 +17,7 @@ main{
     margin: 2rem;
     display: flex;
     justify-content: center;
+    text-align: center;/* para alinear elmentos al centro de la pagina*/
 }
 
 h2{
@@ -37,7 +39,7 @@ h2{
     width: 70%;
     display: flex;
     justify-content: center;
-    margin-top: 5%;
+    margin-top: 17%;
     margin-left: 14%;
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -54,6 +56,7 @@ input{
     border-top: none;
     border-left: none;
     border-right: none;
+    margin-bottom: 1rem; /* Espacio entre el input y el botón */
 }
 
 #register {
@@ -69,7 +72,7 @@ button{
     background: linear-gradient(#5CB3C1, #01587A);
     color:#F8F9F9;
     padding: 0.5rem; 
-    margin-bottom: 2rem;
+    
 }
 
 /*preferences*/
@@ -120,3 +123,43 @@ button{
     width:40px;
     height:40px;
 }
+
+
+/*Login*/
+
+.login-title{
+font-size: large;
+
+}
+
+
+.forgot-password{
+    font-size: small; 
+    margin-right: 90px
+  
+
+}
+
+.sign-up{
+    font-size: small;
+    margin:60px
+}
+
+.login-button{
+  
+  margin: 0 auto; /* Centrar horizontalmente el botón en su contenedor */
+  margin-top: 1rem;
+  margin-bottom: 40px; 
+} 
+
+.buttonsShowHidePassword{
+  border: 0px;
+  width: 24px;
+  height: 24px;
+  
+}
+
+ #logo-google{
+    padding-inline: 1rem;
+    margin-bottom: 80px; 
+ }

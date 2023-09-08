@@ -1,9 +1,9 @@
 export function preferences() {
   const prefer = document.createElement('section');
 
-  prefer.innerHTML = `<img id="logo2" src= "img/logo.png">
+  prefer.innerHTML = `<img src=""></img>
        <h2 id="Why">Porqué estás aqui?</h2>
-        <form id="userForm">
+        <form>
             <ul id="pref">
             <li class="liPref"><button id="teacher" value="teacher" class="ask" name="userType">
               <img src= "img/teacher.png" class="icon">
@@ -19,6 +19,7 @@ export function preferences() {
               <p class="options">Soy arte educador/mediador, quiero aportar y recibir ideas</button></li>
             </ul>
         </form>`;
+
   return prefer;
 }
 

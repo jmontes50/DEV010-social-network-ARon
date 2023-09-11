@@ -215,6 +215,7 @@ li{
 
 input{
     width: 75%;
+    font-size: large;
     border-top: none;
     border-left: none;
     border-right: none;
@@ -283,4 +284,20 @@ button{
 
 .options {
     padding-left: 1rem;
+}
+
+.eye{
+    background: #f8f9f9;
+    border:none;
+    padding: 0px;
+    margin-top: -2px;
+    margin-bottom: 2px;
+    width: 24px;
+    height: 24px;
+    margin-left: -2px;
+    background-image: url(./assets/openEye.png);
+}
+
+.eye:active{
+    background-image: url(./assets/shutEye.png);
 }

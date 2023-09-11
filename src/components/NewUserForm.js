@@ -4,20 +4,39 @@ import { auth } from './firebase.js';
 function newUser(navigateTo) {
   const newUserForm = document.createElement('section');
 
-  newUserForm.innerHTML = `<img src=""></img>
+  newUserForm.innerHTML = `<img id="logo" src= "img/logo.png">
    <h2 id="title">Nuevos usuarios</h2>
-    <form>
+    <form id="newUserUl">
         <ul id="register">
         <li><input id="name" placeholder="Nombre" required></li>
         <li><input id="email" placeholder="E-mail" required></li>
-        <li><input id="password" placeholder="Contraseña" required></li>
-        <li><input id="repeatPass" placeholder="Repetir contraseña" required></li>
+        <li><input id="password" type=password placeholder="Contraseña" required> 
+          <button class="eye"></button></li>
+        <li><input id="repeatPass" type=password placeholder="Repetir contraseña" required>
+        <button class="eye"></button></li>
         <li><button id="registerSummit">Registrar</button></li>
         </ul>
     </form>`;
 
   document.body.appendChild(newUserForm);
   const registerForm = document.getElementById('newUserUl');
+  const btnEye = document.querySelectorAll('.eye');
+  const passwordInput = document.getElementById('password');
+  const repeatPasswordInput = document.getElementById('repeatPass');
+
+  btnEye.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        repeatPasswordInput.type = 'text';
+        btnEye.style.backgroundImage = 'url("assets/OpenEye.png")';
+      } else {
+        passwordInput.type = 'password';
+        repeatPasswordInput.type = 'password';
+        btnEye.style.backgroundImage = 'url("assets/shutEye.png")';
+      }
+    });
+  });
 
   registerForm.addEventListener('submit', (event) => {
     event.preventDefault(); // Para que el formulario no se envíe automáticamente.

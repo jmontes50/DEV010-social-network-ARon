@@ -22,7 +22,7 @@ export function preferences(navigateTo) {
 
   document.body.appendChild(prefer);
 
-//Metemos en una variable la selección del usuario para usarla mas adelante en el desarrollo. 
+  // Metemos en una variable la selección del usuario para usarla mas adelante en el desarrollo.
   const userTypeForm = document.getElementById('userType');
   userTypeForm.addEventListener('click', (e) => {
     e.stopImmediatePropagation();

@@ -41,4 +41,5 @@ window.onpopstate = () => {
   navigateTo(window.location.pathname);
 };
 
+
 navigateTo(window.location.pathname || defaultRoute);

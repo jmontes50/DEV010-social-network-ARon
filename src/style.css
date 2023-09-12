@@ -49,6 +49,8 @@ li{
     display: flex;
     justify-content: center;
     margin-top: 1rem;
+    align-items: center;
+    
 }
 
 input{
@@ -56,13 +58,15 @@ input{
     border-top: none;
     border-left: none;
     border-right: none;
-    margin-bottom: 1rem; /* Espacio entre el input y el botón */
+    margin:2%;
 }
 
 #register {
-    list-style-type: none;
-    padding-inline-start: 0%;
+    list-style-type:none;
+    padding-inline-start:0%;
+   
 }
+
 
 button{
     display:flex;
@@ -72,6 +76,7 @@ button{
     background: linear-gradient(#5CB3C1, #01587A);
     color:#F8F9F9;
     padding: 0.5rem; 
+    margin-bottom: 1%;
     
 }
 
@@ -108,7 +113,6 @@ button{
     border:none;
     width: 100%;
 }
-
 .ask:hover{
     background-color: #5CB3C1;
 }
@@ -135,32 +139,42 @@ font-size: large;
 
 
 .forgot-password{
-    font-size: small; 
-    margin-right: 90px
-  
+    font-size: .6rem;
+    margin-left: 10%;
 
 }
 
 .sign-up{
-    font-size: small;
-    margin:60px
+    font-size: .6rem;
+    margin-right: 10%;
+    
+   
 }
 
 .login-button{
   
-  margin: 0 auto; /* Centrar horizontalmente el botón en su contenedor */
+  margin: 0 auto; /* Centrar horizontalmente el botón en su contenedor*/ 
   margin-top: 1rem;
-  margin-bottom: 40px; 
+  margin-bottom: 40px;
+  
 } 
 
 .buttonsShowHidePassword{
-  border: 0px;
-  width: 24px;
-  height: 24px;
-  
+    border: 0px;
+    width: 24px;
+    height: 24px;
+    display:inline-flexbox; 
+    margin-left: 83%;
+    top:0%
+
 }
 
  #logo-google{
     padding-inline: 1rem;
     margin-bottom: 80px; 
+ }
+
+ .iniciar-sesion-con-google{
+    font-size: smaller;
+
  }

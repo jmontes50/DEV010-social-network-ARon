@@ -15,21 +15,22 @@ function recover() {
   const emailRecover = document.createElement('input');
   emailRecover.setAttribute('id', 'emailRecover');
   emailRecover.setAttribute('type', 'email');
-  emailRecover.setAttribute('placeholder', 'Correo electronico');
+  emailRecover.setAttribute('placeholder', 'Correo electrónico');
 
   const btnSendEmail = document.createElement('button');
   btnSendEmail.setAttribute('id', 'btnSendEmail');
   btnSendEmail.textContent = 'Enviar correo';
 
   // evento del boton enviar correo
-  btnSendEmail.addEventListener('click', async () => {
+  btnSendEmail.addEventListener('click', () => {
     const email = emailRecover.value;
-    try {
-      await sendPasswordResetEmail(auth, email);
-      console.log('Se ha enviado el correo para restaurar contraseña');
-    } catch (error) {
-      console.log('Correo electrónico no encontrado');
-    }
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        console.log('Correo electrónico encontrado');
+      })
+      .catch(() => {
+        console.log('Correo electrónico no encontrado');
+      });
   });
 
   // Mostrar los elementos creados

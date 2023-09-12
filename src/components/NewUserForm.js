@@ -4,7 +4,8 @@ import { auth } from './firebase.js';
 function newUser() {
   const newUserForm = document.createElement('section');
 
-  newUserForm.innerHTML = `<img id="logo" src= "img/logo.png">
+
+  newUserForm.innerHTML = `<img id="logo" src="img/logo.png"></img>
    <h2 id="title">Nuevos usuarios</h2>
     <form id="newUserUl">
         <ul id="register">

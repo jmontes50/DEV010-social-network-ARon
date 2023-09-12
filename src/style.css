@@ -176,5 +176,25 @@ font-size: large;
 
  .iniciar-sesion-con-google{
     font-size: smaller;
+}
 
- }
+.ask:hover{
+    background-color: #5CB3C1;
+}
+
+.eye{
+    background: #f8f9f9;
+    border:none;
+    padding: 0px;
+    margin-top: -2px;
+    margin-bottom: 2px;
+    width: 24px;
+    height: 24px;
+    margin-left: -2px;
+    background-image: url(./assets/openEye.png);
+}
+
+.eye:active{
+    background-image: url(./assets/shutEye.png);
+}
+

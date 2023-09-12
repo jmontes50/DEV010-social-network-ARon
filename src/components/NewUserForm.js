@@ -1,7 +1,7 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from './firebase.js';
 
-function newUser() {
+function newUser(navigateTo) {
   const newUserForm = document.createElement('section');
 
   newUserForm.innerHTML = `<img id="logo" src= "img/logo.png">
@@ -77,6 +77,7 @@ function newUser() {
       });
 
     registerForm.reset();
+    window.location.href = '/preferences';
   });
 
   return newUserForm;

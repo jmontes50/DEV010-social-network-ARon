@@ -50,6 +50,10 @@ function newUser(navigateTo) {
       alert('Las contraseñas no coinciden');
       return;
     }
+    if (password.length <= 8) {
+      alert('Prueba con una contraseña mas larga');
+      return;
+    }
 
     // Crear un objeto con los valores capturados
 

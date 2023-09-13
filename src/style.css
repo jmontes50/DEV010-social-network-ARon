@@ -191,10 +191,9 @@ font-size: large;
     width: 24px;
     height: 24px;
     margin-left: -2px;
-    background-image: url(./assets/openEye.png);
+    background-image: url(/assets/shutEye.png);
 }
 
-.eye:active{
+/* .eye:active{
     background-image: url(./assets/shutEye.png);
-}
-
+} */

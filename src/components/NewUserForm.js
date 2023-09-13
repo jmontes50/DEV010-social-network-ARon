@@ -11,9 +11,9 @@ function newUser(navigateTo) {
         <li><input id="name" placeholder="Nombre" required></li>
         <li><input id="email" placeholder="E-mail" required></li>
         <li><input id="password" type=password placeholder="Contraseña" required> 
-          <button class="eye"></button></li>
+          <button id="btnEye1" class="eye"></button></li>
         <li><input id="repeatPass" type=password placeholder="Repetir contraseña" required>
-        <button class="eye"></button></li>
+        <button id="btnEye2" class="eye"></button></li>
         <li><button id="registerSummit">Registrar</button></li>
         </ul>
     </form>`;
@@ -25,15 +25,16 @@ function newUser(navigateTo) {
   const repeatPasswordInput = document.getElementById('repeatPass');
 
   btnEye.forEach((btn) => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (event) => {
+      event.preventDefault();
       if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
         repeatPasswordInput.type = 'text';
-        btnEye.style.backgroundImage = 'url("assets/OpenEye.png")';
+        btn.style.backgroundImage = 'url(assets/openEye.png)';
       } else {
         passwordInput.type = 'password';
         repeatPasswordInput.type = 'password';
-        btnEye.style.backgroundImage = 'url("assets/shutEye.png")';
+        btn.style.backgroundImage = 'url(assets/shutEye.png)';
       }
     });
   });

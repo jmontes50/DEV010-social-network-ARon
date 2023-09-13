@@ -5,7 +5,8 @@ const auth = getAuth(firebaseApp);
 
 function recover() {
   const logo = document.createElement('img');
-  logo.setAttribute('src', 'assets/logo256.png');
+  logo.setAttribute('src', './assets/logo256.png');
+  logo.setAttribute('class', 'logoRecover');
 
   const section = document.createElement('section');
   const title = document.createElement('h2');

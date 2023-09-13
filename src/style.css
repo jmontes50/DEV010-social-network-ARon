@@ -251,6 +251,7 @@ h3{
     padding-bottom: 2rem;
     color:#01587A;
 }
+
 /*Cambios Responsive */
 
 @media screen and (max-width: 360px) {
@@ -281,3 +282,4 @@ h3{
        font-size: x-small;
     }
 }
+

@@ -252,6 +252,33 @@ h3{
     color:#01587A;
 }
 
+.timeLineStyle{
+    background-color: #99d8dd;
+    min-height: 600px;
+    min-width: 100%;
+    border-radius: 20px;
+}
+
+.timeLineLogo{
+    display: flex;
+    justify-content: left;
+    height: 12%; 
+    margin: 10px;
+}
+
+#btnClose{
+    position: absolute;
+    height: 7%;
+    margin: -70px 30px 10px 95px;
+}
+
+.postSection{
+    background-color: #e1e8ec;
+    min-height: 600px;
+    min-width: 80%;
+    border-radius: 20px;
+   justify-content: center;
+}
 /*Cambios Responsive */
 
 @media screen and (max-width: 360px) {

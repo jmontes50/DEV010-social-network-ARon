@@ -1,4 +1,4 @@
-/*import home from './components/home.js';*/
+/* import home from './components/home.js'; */
 import login from './components/login.js';
 import error from './components/error.js';
 import recover from './components/recover.js';

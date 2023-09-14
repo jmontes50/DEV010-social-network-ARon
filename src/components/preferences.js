@@ -2,7 +2,7 @@ export function preferences(navigateTo) {
   const prefer = document.createElement('section');
 
   prefer.innerHTML = `<img src=""></img>
-       <h2 id="Why">Porqué estás aqui?</h2>
+       <h2 id="Why">¿Por qué estás aqui?</h2>
         <article id="userType">
             <ul id="pref">
             <li class="liPref"><button id="teacher" value="teacher" class="ask" name="userType">

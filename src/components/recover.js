@@ -21,20 +21,26 @@ function recover() {
   btnSendEmail.setAttribute('id', 'btnSendEmail');
   btnSendEmail.textContent = 'Enviar correo';
 
+  const showAlert = document.createElement('span');
+  showAlert.setAttribute('id', 'showAlert');
+
   // evento del boton enviar correo
   btnSendEmail.addEventListener('click', () => {
     const email = emailRecover.value;
     sendPasswordResetEmail(auth, email)
       .then(() => {
-        console.log('Correo electrónico encontrado');
+        showAlert.innerHTML = 'Correo electrónico enviado, por favor revisa tu correo para cambiar tu contraseña';
+        setTimeout(() => {
+          window.location.href = '/';
+        }, 5000);
       })
       .catch(() => {
-        console.log('Correo electrónico no encontrado');
+        showAlert.innerHTML = 'Correo electrónico no encontrado';
       });
   });
 
   // Mostrar los elementos creados
-  section.append(logo, title, emailRecover, btnSendEmail);
+  section.append(logo, title, emailRecover, btnSendEmail, showAlert);
   return section;
 }
 

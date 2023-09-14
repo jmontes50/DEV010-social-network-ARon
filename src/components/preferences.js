@@ -31,7 +31,7 @@ export function preferences(navigateTo) {
       const userTypeValue = e.target.value;
       console.log(userTypeValue);
     }
-    window.location.href = '/';
+    //window.location.href = '/tl';
   });
   return prefer;
 }

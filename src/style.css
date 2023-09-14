@@ -12,7 +12,7 @@ body{
 
 main{
     background-color: #fefefe;
-    border-radius: 5%;
+    border-radius: 20px;
     margin: 2rem;
     display: flex;
     justify-content: center;
@@ -74,7 +74,7 @@ input{
 button{
     display:flex;
     text-align: center;
-    border-radius: 15%;
+    border-radius: 15px;
     margin-top: 1rem;
     margin-bottom: 2rem;
     background: linear-gradient(#5CB3C1, #01587A);
@@ -122,7 +122,7 @@ button:active{
     color:#01587A;
     text-align: center;
     padding:1rem;
-    border-radius:29%;
+    border-radius:29px;
     font-size: smaller;
     display: flex;
     flex-direction: row;

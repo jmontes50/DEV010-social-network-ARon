@@ -30,4 +30,3 @@ const firebaseConfig = {
 export const firebaseApp = initializeApp(firebaseConfig);
 export default firebaseApp;
 // En esta variable le instalo el auth a la app.
-export const auth = getAuth(firebaseApp);

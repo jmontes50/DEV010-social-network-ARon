@@ -257,19 +257,22 @@ h3{
     min-height: 600px;
     min-width: 100%;
     border-radius: 20px;
+    padding:10px;
 }
 
 .timeLineLogo{
     display: flex;
-    justify-content: left;
-    height: 12%; 
-    margin: 10px;
+    height: 10%; 
+    margin: 20px;
+    margin-bottom: 95px;
 }
 
 #btnClose{
-    position: absolute;
-    height: 7%;
-    margin: -70px 30px 10px 95px;
+   display:flex;
+   width: 40px;
+   margin-left: 85%;
+   margin-top: -155px;
+   padding-bottom: 20px;
 }
 
 .postSection{
@@ -277,7 +280,6 @@ h3{
     min-height: 600px;
     min-width: 80%;
     border-radius: 20px;
-   justify-content: center;
 }
 /*Cambios Responsive */
 
@@ -307,6 +309,21 @@ h3{
 
     .ask{
        font-size: x-small;
+    }
+
+    .timeLineLogo{
+        display: flex;
+        height: 10%; 
+        margin: 5px;
+        margin-bottom: 122px;
+    }
+
+    #btnClose{
+        width: 10%;
+        margin-left: 84%;
+        margin-top: -179px;
+        margin-bottom: 35px;
+        padding-bottom: 0px;
     }
 }
 

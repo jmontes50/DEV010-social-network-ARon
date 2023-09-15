@@ -1,4 +1,4 @@
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 
 function newUser(navigateTo) {
   const newUserForm = document.createElement('section');
@@ -72,8 +72,11 @@ function newUser(navigateTo) {
       .then((userCredential) => {
       // Signed in
         const user = userCredential.user;
+        sendEmailVerification(user);
+        alert('Te enviamos un correo');
         window.location.href = '/preferences';
       })
+
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;

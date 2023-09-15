@@ -5,6 +5,7 @@ import recover from './components/recover.js';
 import reset from './components/resetPassword.js';
 import newUser from './components/NewUserForm.js';
 import preferences from './components/preferences.js';
+import TimeLine from './components/TimeLine.js';
 
 const root = document.getElementById('root');
 
@@ -15,6 +16,7 @@ const routes = [
   { path: '/resetPassword', component: reset },
   { path: '/newUser', component: newUser },
   { path: '/preferences', component: preferences },
+  { path: '/TimeLine', component: TimeLine },
 ];
 
 const defaultRoute = '/';
@@ -39,6 +41,5 @@ function navigateTo(hash) {
 window.onpopstate = () => {
   navigateTo(window.location.pathname);
 };
-
 
 navigateTo(window.location.pathname || defaultRoute);

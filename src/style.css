@@ -281,6 +281,12 @@ h3{
     min-width: 80%;
     border-radius: 20px;
 }
+
+#btnLike{
+    width: 32px;
+    height: 32px;
+}
+
 /*Cambios Responsive */
 
 @media screen and (max-width: 360px) {

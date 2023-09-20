@@ -53,6 +53,11 @@ function TimeLine(navigateTo) {
       /* const commentTextDiv = document.createElement('div');
       commentTextDiv.textContent = commentText; */
 
+      const btnLike = document.createElement('button');
+      btnLike.textContent = 'like';
+      btnLike.setAttribute('class', 'likeBtn');
+      let liking = false;
+
       const editButton = document.createElement('button');
       editButton.textContent = 'Editar';
       editButton.setAttribute('class', 'editButton');
@@ -83,8 +88,9 @@ function TimeLine(navigateTo) {
       });
       const commentButonsDiv = document.createElement('div');
       commentButonsDiv.setAttribute('class', 'commentButtons');
-      commentButonsDiv.appendChild(editButton);
-      commentButonsDiv.appendChild(deleteButton);
+      commentButonsDiv.appendChild(btnLike);
+      // commentButonsDiv.appendChild(editButton);
+      // commentButonsDiv.appendChild(deleteButton);
 
       commentContainer.appendChild(commentDiv);
       commentContainer.appendChild(commentButonsDiv);

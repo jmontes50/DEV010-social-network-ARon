@@ -39,6 +39,8 @@ function TimeLine(navigateTo) {
   commentList.setAttribute('id', 'commentList');
 
   let isEditing = false;
+  let isLiking = false;
+  let likes = 0;
 
   sendButton.addEventListener('click', () => {
     const commentText = commentInput.value;
@@ -81,11 +83,14 @@ function TimeLine(navigateTo) {
           commentContainer.remove();
         }
       });
-      const commentButonsDiv = document.createElement('div');
-      commentButonsDiv.setAttribute('class', 'commentButtons');
-      commentButonsDiv.appendChild(btnLike);
-      // commentButonsDiv.appendChild(editButton);
-      // commentButonsDiv.appendChild(deleteButton);
+
+      const btnLike = document.createElement('img');
+      btnLike.setAttribute('id', 'btnLike');
+      btnLike.setAttribute('src', './assets/unlike.png');
+
+      const sumLikes = document.createElement('span');
+      sumLikes.setAttribute('id', 'sumLikes');
+      sumLikes.innerHTML = likes;
 
       editLink.addEventListener('click', () => {
         isEditing = true;
@@ -99,8 +104,28 @@ function TimeLine(navigateTo) {
           commentContainer.remove();
         }
       });
+
+      btnLike.addEventListener('click', () => {
+        if (isLiking) {
+          btnLike.setAttribute('src', './assets/unLike.png');
+          likes -= 1;
+          isLiking = false;
+        } else {
+          btnLike.setAttribute('src', './assets/like.png');
+          likes += 1;
+          isLiking = true;
+        }
+        sumLikes.innerHTML = likes;
+      });
+
+      const likeContainer = document.createElement('div');
+      likeContainer.setAttribute('class', 'liking');
+      likeContainer.appendChild(btnLike);
+      likeContainer.appendChild(sumLikes);
+
       const commentButtonsDiv = document.createElement('div');
       commentButtonsDiv.setAttribute('class', 'commentButtons');
+      commentButtonsDiv.appendChild(likeContainer);
       commentButtonsDiv.appendChild(editLink);
       commentButtonsDiv.appendChild(deleteLink);
 

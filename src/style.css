@@ -312,17 +312,15 @@ h3{
 
 }
 
-.editButton, .deleteButton{
-display: flex;
-margin-right: 10px;
+
+#btnLike{
+    width: 16px;
+    height: 16px;
 }
 
-.likeBtn{
-    display: flex;
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-    /* margin-left: 450px; */
+.liking{
+    display: inline;
+    margin-right: 110px;
 }
 
  
@@ -356,7 +354,6 @@ margin-right: 10px;
   .commentButtonsDiv {
     display: flex;
     justify-content: flex-end;
-    
   }
 
   .action-link {

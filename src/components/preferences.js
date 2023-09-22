@@ -1,4 +1,4 @@
-export function preferences(navigateTo) {
+function preferences(navigateTo) {
   const prefer = document.createElement('section');
 
   prefer.innerHTML = `<img src=""></img>

@@ -320,7 +320,8 @@ h3{
 
 .liking{
     display: inline;
-    margin-right: 110px;
+    /* align-items: flex-start;*/
+    /* margin-right: 110px;*/ 
     
 }
 

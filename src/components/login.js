@@ -130,6 +130,7 @@ function login(navigateTo) {
       .then((result) => {
         const user = result.user;
         console.log('Inicio de sesion con Google exitoso:', user);
+        window.location.href = './timeLine';
       })
       .catch((error) => {
         console.error('Error al iniciar sesion con Google:', error);

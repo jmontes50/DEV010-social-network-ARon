@@ -1,9 +1,8 @@
 import { getAuth } from 'firebase/auth';
 import { onAuthStateChanged } from '@firebase/auth';
-import { getFirestore, collection } from 'firebase/firestore';
 import firebaseApp from './firebase.js';
+import createPost from './firestoreCreate.js';
 
-const fs = getFirestore(firebaseApp);
 const auth = getAuth(firebaseApp);
 
 function TimeLine(navigateTo) {
@@ -50,7 +49,7 @@ function TimeLine(navigateTo) {
 
   let commentText;
   const commentContainer = document.createElement('li');
-  // const commentTextarea = document.createElement('textarea');
+  let commentTextarea;
   // const editLink = document.createElement('a');
   // const deleteLink = document.createElement('a');
   // const btnLike = document.createElement('img');
@@ -61,21 +60,6 @@ function TimeLine(navigateTo) {
   // cargar posts
   document.querySelector('commenTextarea');
 
-  // Eventos
-  // autenticacion
-  /* auth.onAuthStateChanged((user) => {
-    if (user) {
-      console.log('sign in');
-      collection(fs, 'posts')
-        .get()
-        .then((snapshot) => {
-          console.log(snapshot.docs);
-        });
-    } else {
-      console.log('sign out');
-    }
-  }); */
-
   // cliks
   sendButton.addEventListener('click', () => {
     commentText = commentInput.value;
@@ -83,7 +67,7 @@ function TimeLine(navigateTo) {
       // const commentContainer = document.createElement('li');
       commentContainer.setAttribute('class', 'commentContainer');
 
-      const commentTextarea = document.createElement('textarea');
+      commentTextarea = document.createElement('textarea');
       commentTextarea.value = commentText;
       commentTextarea.setAttribute('class', 'commentTextarea');
       commentTextarea.setAttribute('name', 'commentTextarea');
@@ -171,6 +155,9 @@ function TimeLine(navigateTo) {
       commentList.classList.add('visible');
       commentList.style.display = 'block';
       commentInput.value = '';
+
+      // mandar post a DB
+      createPost();
     }
   });
 

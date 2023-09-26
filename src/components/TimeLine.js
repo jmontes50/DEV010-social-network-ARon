@@ -1,5 +1,4 @@
-import { getAuth } from 'firebase/auth';
-import { onAuthStateChanged } from '@firebase/auth';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import firebaseApp from './firebase.js';
 import createPost from './firestoreCreate.js';
 
@@ -181,8 +180,8 @@ function TimeLine() {
       commentList.style.display = 'block';
       commentInput.value = '';
 
-      // mandar post a DB
-      createPost();
+      // mandar post a DB (userID, icon, idLikes, post, time)
+      createPost(selectedUserName, selectedImage, commentText);
     }
   });
   sectionPosts.appendChild(userContainer);

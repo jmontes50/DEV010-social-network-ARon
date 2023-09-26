@@ -38,9 +38,9 @@ describe('preferences', () => {
       view: window,
     });
 
-    const mockConsoleLog = jest.spyOn(console, 'log'); //mandamos a Jest a que espíe el futuro console.log que vamos a hacer.
+    const mockConsoleLog = jest.spyOn(console, 'log'); // mandamos a Jest a que espíe el futuro console.log que vamos a hacer.
 
-    button.dispatchEvent(clickEvent); //esto simula el que alguien hizo click en el botón.
+    button.dispatchEvent(clickEvent); // esto simula el que alguien hizo click en el botón.
 
     expect(mockConsoleLog).toHaveBeenCalledWith('teacher');
 

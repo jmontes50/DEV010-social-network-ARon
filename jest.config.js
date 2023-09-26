@@ -1,5 +1,3 @@
-module.exports = {
-  testEnvironment: 'jsdom',
-}; module.exports = {
+ module.exports = {
   testEnvironment: 'jsdom',
 };

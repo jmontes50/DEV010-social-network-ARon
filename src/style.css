@@ -294,14 +294,19 @@ h3{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    margin-right: 70%;
+    margin-right: 90%;
 
 }
 .user-image{
-   width: 1rem;
+   width: 2rem;
    height: 2rem;
-   margin-right:0.5rem;
+   margin-right:0.8rem;
    margin-top: 7px;
+}
+
+.user-name{
+    color: #01587A;
+    font-size: medium;
 }
 
 #commentInput, #commentList {
@@ -427,6 +432,10 @@ h3{
         height: 10%; 
         margin: 5px;
         margin-bottom: 122px;
+    }
+
+    .user-container{
+        margin-right: 60%;
     }
 
     #btnClose{

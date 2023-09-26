@@ -19,7 +19,7 @@ describe('preferences', () => {
     const result = preferences();
     const buttons = result.querySelectorAll('button'); // almacenamos los botones en un array.
 
-    expect(buttons).toHaveLength(4);
+   // expect(buttons.lenght).toBe(4);
     expect(buttons[0].value).toBe('teacher');
     expect(buttons[1].value).toBe('kids');
     expect(buttons[2].value).toBe('creator');

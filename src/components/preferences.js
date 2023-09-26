@@ -8,8 +8,7 @@ const userImage = document.createElement('img');
 function preferences() {
   const prefer = document.createElement('section');
 
-  prefer.innerHTML = `<img src= ""></img>
-  <div id="nameInputDiv">
+  prefer.innerHTML = `<div id="nameInputDiv">
     <h2><label for="userName">¿Quién eres?</label></h2>
     <input type="text" id="userName" placeholder="Tu Nombre">
     </div>
@@ -29,7 +28,7 @@ function preferences() {
           <p class="options">Soy arte educador/mediador, quiero aportar y recibir ideas</button></li>
       </ul>
     </article>
-    <button id="savePreferences">Guardar Preferencias</button>`; 
+    <button id="savePreferences">Guardar Preferencias</button>`;
 
   document.body.appendChild(prefer);
   // seleccionar tipo de usuario

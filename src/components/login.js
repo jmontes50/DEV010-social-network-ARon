@@ -2,7 +2,7 @@ import {
   getAuth, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword,
 } from 'firebase/auth';
 
-import { firebaseApp } from './firebase';
+import firebaseApp from './firebase';
 
 function login(navigateTo) {
   const logo = document.createElement('img');

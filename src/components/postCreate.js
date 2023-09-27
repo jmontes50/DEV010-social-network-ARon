@@ -1,4 +1,4 @@
-function postCreate(userName, userImage, postText) {
+function postCreate(userImage, userName, postText) {
   // console.log('entra a postCreate');
   // crear el li que contenga
   const liPost = document.createElement('li');
@@ -8,7 +8,7 @@ function postCreate(userName, userImage, postText) {
   // ICONO
   const imgUser = document.createElement('img');
   imgUser.setAttribute('id', 'userImage');
-  imgUser.setAttribute('class', 'user-image');
+  imgUser.setAttribute('class', 'userImagePost');
   imgUser.setAttribute('src', userImage);
 
   // NOMBRE
@@ -17,6 +17,9 @@ function postCreate(userName, userImage, postText) {
   nameUser.setAttribute('class', 'user-name');
 
   // BOTONES DE EDITAR Y BORRAR
+  const containerButtons = document.createElement('div');
+  containerButtons.setAttribute('class', 'postButtons');
+
   const editLink = document.createElement('a');
   editLink.textContent = 'Editar';
   editLink.classList.add('action-link');
@@ -24,6 +27,9 @@ function postCreate(userName, userImage, postText) {
   const deleteLink = document.createElement('a');
   deleteLink.textContent = 'Borrar';
   deleteLink.classList.add('action-link');
+
+  containerButtons.appendChild(editLink);
+  containerButtons.appendChild(deleteLink);
 
   // AREA DEL POST
   const commentTextarea = document.createElement('textarea');
@@ -33,6 +39,10 @@ function postCreate(userName, userImage, postText) {
   commentTextarea.setAttribute('readonly', 'true');
 
   // BOTON DE LIKE
+
+  const containerLikes = document.createElement('div');
+  containerLikes.setAttribute('class', 'likeArea');
+
   const btnLike = document.createElement('img');
   btnLike.setAttribute('id', 'btnLike');
   btnLike.setAttribute('src', './assets/unlike.png');
@@ -41,13 +51,18 @@ function postCreate(userName, userImage, postText) {
   const likes = 0;
   sumLikes.innerHTML = likes;
 
+  containerLikes.appendChild(btnLike);
+  containerLikes.appendChild(sumLikes);
+
   liPost.appendChild(imgUser);
   liPost.appendChild(nameUser);
-  liPost.appendChild(editLink);
-  liPost.appendChild(deleteLink);
+  liPost.appendChild(containerButtons);
+  // liPost.appendChild(editLink);
+  // liPost.appendChild(deleteLink);
   liPost.appendChild(commentTextarea);
-  liPost.appendChild(btnLike);
-  liPost.appendChild(sumLikes);
+  // liPost.appendChild(btnLike);
+  // liPost.appendChild(sumLikes);
+  liPost.appendChild(containerLikes);
 
   return liPost;
 }

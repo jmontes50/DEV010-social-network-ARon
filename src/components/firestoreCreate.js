@@ -1,13 +1,14 @@
-import { doc, setDoc } from 'firebase/firestore';
+import { doc, updateDoc, arrayUnion } from 'firebase/firestore';
 import { db } from './firebase.js';
 
-const createPost = (userID, icon, idLikes, post, time) => {
-  setDoc(doc(db, 'posts'), {
-    autor: userID,
-    icono: icon,
-    likes: idLikes,
-    post,
-    tiempo: time,
+const createPost = (userID, icon, posts) => {
+  const postRef = doc(db, 'postPrueba', 'posts1b');
+
+  updateDoc(postRef, {
+    autor: arrayUnion(userID),
+    icono: arrayUnion(icon),
+    posts: arrayUnion(posts),
+
   })
     .then(() => {
       console.log('Post creado');
@@ -15,4 +16,4 @@ const createPost = (userID, icon, idLikes, post, time) => {
     .catch((error) => console.log(error));
 };
 
-export default createPost
+export default createPost;

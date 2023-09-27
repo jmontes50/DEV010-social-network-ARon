@@ -2,9 +2,9 @@ import {
   getAuth, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword,
 } from 'firebase/auth';
 
-import { firebaseApp } from './firebase';
+import firebaseApp from './firebase';
 
-function login(navigateTo) {
+function login() {
   const logo = document.createElement('img');
   logo.setAttribute('src', '/assets/Colective_isCool!_(1).png');
   logo.setAttribute('alt', 'Colective_isCool');

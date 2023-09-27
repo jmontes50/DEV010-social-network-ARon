@@ -1,5 +1,4 @@
-import { getAuth } from 'firebase/auth';
-import { onAuthStateChanged } from '@firebase/auth';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import firebaseApp from './firebase.js';
 import createPost from './firestoreCreate.js';
 

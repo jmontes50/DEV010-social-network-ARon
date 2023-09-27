@@ -25,10 +25,10 @@ const firebaseConfig = {
 
 };
 
-const firebaseApp = initializeApp(firebaseConfig);
+/*const firebaseApp = initializeApp(firebaseConfig);
 const firestore = getFirestore(firebaseApp);
 
-export { firebaseApp, firestore };
+export { firebaseApp, firestore };*/
 
 // Initialize Firebase
 // En esta variable esta guardada la app de Firebase.

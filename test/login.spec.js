@@ -1,5 +1,4 @@
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'; // Importa la función que quieres probar
-import { async } from 'regenerator-runtime';
 import { expect } from '@playwright/test';
 import { autenticacionUser } from './login.js';
 

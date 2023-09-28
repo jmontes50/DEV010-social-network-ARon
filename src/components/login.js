@@ -112,15 +112,13 @@ function login() {
   });
 
   // creamos opcion para inicar sesion con google
-  const googleSignInOption = document.createElement('p');
-  const googleSignInLink = document.createElement('a');
-  googleSignInLink.textContent = 'Iniciar Sesión con Google';
-  googleSignInLink.setAttribute('href', '/auth/google'); // poner url
-  googleSignInLink.classList = 'iniciar-sesion-con-google';
-
+  const googleSignInOption = document.createElement('div');
+  const googleSignInLink = document.createElement('img');
+  googleSignInLink.setAttribute('src', 'btn_google_signin_dark_normal_web@2x.png'); // poner url
+  googleSignInLink.setAttribute('alt', 'Google Sign-In');
   googleSignInOption.appendChild(googleSignInLink);
 
-  googleSignInLink.addEventListener('click', async (e) => {
+  googleSignInLink.addEventListener('click', (e) => {
     e.preventDefault(); // evita que el enlace cambie de pagina (usamos "#" como href)
 
     const auth = getAuth(firebaseApp);

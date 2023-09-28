@@ -1,4 +1,5 @@
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { collection, getFirestore } from '@firebase/firestore';
 import firebaseApp from './firebase.js';
 import createPost from './firestoreCreate.js';
 
@@ -39,25 +40,20 @@ function TimeLine() {
   sendButton.setAttribute('id', 'sendButton');
   sendButton.textContent = 'Enviar';
 
-  const commentList = document.createElement('ul');
-  commentList.setAttribute('id', 'commentList');
-
   let isEditing = false;
   let isLiking = false;
   let likes = 0;
 
   let commentText;
-  const commentContainer = document.createElement('li');
-  let commentTextarea;
+  const userContainer = document.createElement('div');
+  userContainer.setAttribute('class', 'user-container');
+
   // const editLink = document.createElement('a');
   // const deleteLink = document.createElement('a');
   // const btnLike = document.createElement('img');
   // const sumLikes = document.createElement('span');
   // const likeContainer = document.createElement('div');
   // const commentButtonsDiv = document.createElement('div');
-
-  const userContainer = document.createElement('div');
-  userContainer.setAttribute('class', 'user-container');
 
   const selectedImage = localStorage.getItem('selectedImage');
   if (selectedImage) {
@@ -80,18 +76,17 @@ function TimeLine() {
   } else {
     console.log('No se encontró un nombre de usuario en el localStorage.');
   }
-
-  // cargar posts
-  document.querySelector('#commenTextarea');
+  const commentsContainer = document.createElement('div');
+  commentsContainer.setAttribute('id', 'commentsContainer');
 
   // cliks
   sendButton.addEventListener('click', () => {
     commentText = commentInput.value;
     if (commentText.trim() !== '') {
-      // const commentContainer = document.createElement('li');
+      const commentContainer = document.createElement('li');
       commentContainer.setAttribute('class', 'commentContainer');
 
-      commentTextarea = document.createElement('textarea');
+      const commentTextarea = document.createElement('textarea');
       commentTextarea.value = commentText;
       commentTextarea.setAttribute('class', 'commentTextarea');
       commentTextarea.setAttribute('name', 'commentTextarea');
@@ -171,10 +166,11 @@ function TimeLine() {
       commentButtonsDiv.appendChild(editLink);
       commentButtonsDiv.appendChild(deleteLink);
 
+      commentContainer.appendChild(userContainer.cloneNode(true));
       commentContainer.appendChild(commentButtonsDiv);
       commentContainer.appendChild(commentTextarea);
       commentContainer.appendChild(likeContainer);
-      commentList.appendChild(commentContainer);
+      commentsContainer.appendChild(commentContainer);
 
       commentList.classList.add('visible');
       commentList.style.display = 'block';
@@ -187,7 +183,9 @@ function TimeLine() {
   sectionPosts.appendChild(userContainer);
   sectionPosts.appendChild(commentInput);
   sectionPosts.appendChild(sendButton);
-  sectionPosts.appendChild(commentList);
+
+  document.body.appendChild(sectionPosts);
+  document.body.appendChild(commentsContainer);
   section.append(
     logoTimeLine,
     btnClose,

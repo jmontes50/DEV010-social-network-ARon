@@ -44,9 +44,9 @@ function TimeLine() {
   const commentList = document.createElement('ul');
   commentList.setAttribute('id', 'commentList');
 
-  let isEditing = false;
-  let isLiking = false;
-  let likes = 0;
+  const isEditing = false;
+  const isLiking = false;
+  const likes = 0;
   let nameLike;
 
   const userContainer = document.createElement('div');

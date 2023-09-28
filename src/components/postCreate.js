@@ -1,4 +1,4 @@
-function postCreate(userName, userImage, postText) {
+function postCreate(userImage, userName, postText) {
   // console.log('entra a postCreate');
   // crear el li que contenga
   const liPost = document.createElement('li');

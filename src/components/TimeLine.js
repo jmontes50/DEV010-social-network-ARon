@@ -180,6 +180,9 @@ function TimeLine() {
     const commentText = commentInput.value;
     const postLi = postCreate(selectedImage, selectedUserName, commentText);
     commentList.appendChild(postLi);
+    // mandar post a DB (userID, icon, idLikes, post, time)
+    nameLike = '';
+    createPost(selectedUserName, selectedImage, nameLike, commentText);
   });
 
   sectionPosts.appendChild(userContainer);

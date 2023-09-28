@@ -43,9 +43,9 @@ function TimeLine() {
   const commentList = document.createElement('ul');
   commentList.setAttribute('id', 'commentList');
 
-  let isEditing = false;
-  let isLiking = false;
-  let likes = 0;
+  const isEditing = false;
+  const isLiking = false;
+  const likes = 0;
   let nameLike;
 
   const userContainer = document.createElement('div');
@@ -180,6 +180,9 @@ function TimeLine() {
     const commentText = commentInput.value;
     const postLi = postCreate(selectedImage, selectedUserName, commentText);
     commentList.appendChild(postLi);
+    // mandar post a DB (userID, icon, idLikes, post, time)
+    nameLike = '';
+    createPost(selectedUserName, selectedImage, nameLike, commentText);
   });
 
   sectionPosts.appendChild(userContainer);

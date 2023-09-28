@@ -24,6 +24,7 @@ const createPost = (userID, icon, idLikes, post) => {
     autor: arrayUnion(userID),
     icono: arrayUnion(icon),
     posts: arrayUnion(posts),
+
   })
     .then(() => {
       console.log('Post creado');

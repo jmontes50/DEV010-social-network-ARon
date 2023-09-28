@@ -1,7 +1,7 @@
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { collection, getFirestore } from '@firebase/firestore';
+import { getAuth } from 'firebase/auth';
 import firebaseApp from './firebase.js';
 import createPost from './firestoreCreate.js';
+import postCreate from './postCreate.js';
 
 const auth = getAuth(firebaseApp);
 
@@ -43,17 +43,10 @@ function TimeLine() {
   let isEditing = false;
   let isLiking = false;
   let likes = 0;
+  let nameLike;
 
-  let commentText;
   const userContainer = document.createElement('div');
   userContainer.setAttribute('class', 'user-container');
-
-  // const editLink = document.createElement('a');
-  // const deleteLink = document.createElement('a');
-  // const btnLike = document.createElement('img');
-  // const sumLikes = document.createElement('span');
-  // const likeContainer = document.createElement('div');
-  // const commentButtonsDiv = document.createElement('div');
 
   const selectedImage = localStorage.getItem('selectedImage');
   if (selectedImage) {
@@ -76,12 +69,18 @@ function TimeLine() {
   } else {
     console.log('No se encontró un nombre de usuario en el localStorage.');
   }
-  const commentsContainer = document.createElement('div');
-  commentsContainer.setAttribute('id', 'commentsContainer');
+
+  const btnLike = document.createElement('img');
+  btnLike.setAttribute('id', 'btnLike');
+  btnLike.setAttribute('src', './assets/unlike.png');
+
+  const sumLikes = document.createElement('span');
+  sumLikes.setAttribute('id', 'sumLikes');
+  sumLikes.innerHTML = likes;
 
   // cliks
-  sendButton.addEventListener('click', () => {
-    commentText = commentInput.value;
+  /* sendButton.addEventListener('click', () => {
+    const commentText = commentInput.value;
     if (commentText.trim() !== '') {
       const commentContainer = document.createElement('li');
       commentContainer.setAttribute('class', 'commentContainer');
@@ -116,19 +115,11 @@ function TimeLine() {
       deleteLink.textContent = 'Borrar';
       deleteLink.classList.add('action-link');
       deleteLink.addEventListener('click', () => {
-        const shouldDelete = window.confirm('¿Estás seguro de que deseas borrar este comentario?');
+        const shouldDelete = window.confirm('¿Estás seguro de que deseas borrar esta entrada?');
         if (shouldDelete) {
           commentContainer.remove();
         }
       });
-
-      const btnLike = document.createElement('img');
-      btnLike.setAttribute('id', 'btnLike');
-      btnLike.setAttribute('src', './assets/unlike.png');
-
-      const sumLikes = document.createElement('span');
-      sumLikes.setAttribute('id', 'sumLikes');
-      sumLikes.innerHTML = likes;
 
       editLink.addEventListener('click', () => {
         isEditing = true;
@@ -144,15 +135,16 @@ function TimeLine() {
       });
 
       btnLike.addEventListener('click', () => {
-        if (isLiking) {
-          btnLike.setAttribute('src', './assets/unLike.png');
-          likes -= 1;
-          isLiking = false;
-        } else {
+        if (!isLiking) {
           btnLike.setAttribute('src', './assets/like.png');
           likes += 1;
           isLiking = true;
+        } else {
+          btnLike.setAttribute('src', './assets/unLike.png');
+          likes -= 1;
+          isLiking = false;
         }
+        console.log(isLiking);
         sumLikes.innerHTML = likes;
       });
 
@@ -177,9 +169,17 @@ function TimeLine() {
       commentInput.value = '';
 
       // mandar post a DB (userID, icon, idLikes, post, time)
-      createPost(selectedUserName, selectedImage, commentText);
+      nameLike = '';
+      createPost(selectedUserName, selectedImage, nameLike, commentText);
     }
+  }); */
+
+  sendButton.addEventListener('click', () => {
+    const commentText = commentInput.value;
+    const postLi = postCreate(selectedImage, selectedUserName, commentText);
+    commentList.appendChild(postLi);
   });
+
   sectionPosts.appendChild(userContainer);
   sectionPosts.appendChild(commentInput);
   sectionPosts.appendChild(sendButton);

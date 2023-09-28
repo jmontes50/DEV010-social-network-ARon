@@ -2,6 +2,7 @@ import { getAuth } from 'firebase/auth';
 import firebaseApp from './firebase.js';
 import createPost from './firestoreCreate.js';
 import postCreate from './postCreate.js';
+import getPost from './firestoreRecover.js';
 
 const auth = getAuth(firebaseApp);
 
@@ -180,6 +181,10 @@ function TimeLine() {
     const commentText = commentInput.value;
     const postLi = postCreate(selectedImage, selectedUserName, commentText);
     commentList.appendChild(postLi);
+    // mandar post a DB (userID, icon, idLikes, post, time)
+    nameLike = '';
+    createPost(selectedUserName, selectedImage, nameLike, commentText);
+    getPost();
   });
 
   sectionPosts.appendChild(userContainer);

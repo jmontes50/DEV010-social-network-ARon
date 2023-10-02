@@ -200,7 +200,7 @@ function TimeLine() {
       });
     });
   });
-  
+
   sectionPosts.appendChild(userContainer);
   sectionPosts.appendChild(commentInput);
   sectionPosts.appendChild(sendButton);

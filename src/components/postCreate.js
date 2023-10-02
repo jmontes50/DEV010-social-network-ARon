@@ -1,4 +1,4 @@
-function postCreate(userImage, userName, postText) {
+function postCreate(userImage, userName, likes, postText) {
   // console.log('entra a postCreate');
   // crear el li que contenga
   const liPost = document.createElement('li');
@@ -48,7 +48,7 @@ function postCreate(userImage, userName, postText) {
   btnLike.setAttribute('src', './assets/unlike.png');
   const sumLikes = document.createElement('span');
   sumLikes.setAttribute('id', 'sumLikes');
-  const likes = 0;
+  // const likes = 0;
   sumLikes.innerHTML = likes;
 
   containerLikes.appendChild(btnLike);

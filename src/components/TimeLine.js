@@ -179,11 +179,11 @@ function TimeLine() {
 
   sendButton.addEventListener('click', () => {
     const commentText = commentInput.value;
-    const postLi = postCreate(selectedImage, selectedUserName, commentText);
+    const postLi = postCreate(selectedImage, selectedUserName, likes, commentText);
     commentList.appendChild(postLi);
     // mandar post a DB (userID, icon, idLikes, post, time)
-    nameLike = '';
-    createPost(selectedUserName, selectedImage, nameLike, commentText);
+    // nameLike = '';
+    createPost(selectedUserName, selectedImage, likes, commentText);
     getPost();
   });
 

@@ -1,6 +1,5 @@
 import { getAuth } from 'firebase/auth';
 import firebaseApp from './firebase.js';
-// import createPost from './firestoreCreate.js';
 import postCreate from './postCreate.js';
 import getPost from './firestoreRecover.js';
 import savePost from './db.js';
@@ -12,7 +11,6 @@ function TimeLine() {
     // getPost();
     const olderPost = getPost();
     console.log(olderPost);
-  }); */
 
   const section = document.createElement('section');
   section.setAttribute('id', 'sectionTimeLine');
@@ -191,8 +189,13 @@ function TimeLine() {
     const postLi = postCreate(selectedImage, selectedUserName, likes, commentText);
     commentList.appendChild(postLi);
     // mandar post a DB (userID, icon, idLikes, post, time)
+    
     const olderPost = getPost();
     console.log(olderPost);
+
+    nameLike = '';
+    // createPost(selectedUserName, selectedImage, nameLike, commentText);
+
   });
 
   sectionPosts.appendChild(userContainer);

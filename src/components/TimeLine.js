@@ -1,6 +1,5 @@
 import { getAuth } from 'firebase/auth';
 import firebaseApp from './firebase.js';
-// import createPost from './firestoreCreate.js';
 import postCreate from './postCreate.js';
 import getPost from './firestoreRecover.js';
 import savePost from './db.js';
@@ -8,6 +7,10 @@ import savePost from './db.js';
 const auth = getAuth(firebaseApp);
 
 function TimeLine() {
+  window.addEventListener('DOMContentLoaded', () => {
+    getPost();
+  });
+
   const section = document.createElement('section');
   section.setAttribute('id', 'sectionTimeLine');
   section.setAttribute('class', 'timeLineStyle');
@@ -186,7 +189,6 @@ function TimeLine() {
     // mandar post a DB (userID, icon, idLikes, post, time)
     nameLike = '';
     // createPost(selectedUserName, selectedImage, nameLike, commentText);
-    getPost();
   });
 
   sectionPosts.appendChild(userContainer);

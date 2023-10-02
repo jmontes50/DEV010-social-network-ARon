@@ -2,7 +2,7 @@ import { getDocs, collection } from 'firebase/firestore';
 import { db } from './firebase.js';
 
 function getPost() {
-  const refPost = collection(db, 'posts');
+  const refPost = collection(db, 'dataBase');
   getDocs(refPost)
     .then((snapshot) => {
       snapshot.forEach((doc) => {

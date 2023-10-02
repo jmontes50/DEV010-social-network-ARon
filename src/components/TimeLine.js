@@ -200,17 +200,7 @@ function TimeLine() {
       });
     });
   });
-
-  /* posts.forEach((post) => {
-      const postLi = postCreate(
-        post.icon,
-        post.userID,
-        post.likes,
-        post.post,
-      );
-      commentList.appendChild(postLi);
-    }); */
-
+  
   sectionPosts.appendChild(userContainer);
   sectionPosts.appendChild(commentInput);
   sectionPosts.appendChild(sendButton);

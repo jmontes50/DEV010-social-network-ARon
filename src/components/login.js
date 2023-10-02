@@ -114,7 +114,8 @@ function login() {
   // creamos opcion para inicar sesion con google
   const googleSignInOption = document.createElement('div');
   const googleSignInLink = document.createElement('img');
-  googleSignInLink.setAttribute('src', 'btn_google_signin_dark_normal_web@2x.png'); // poner url
+  googleSignInLink.setAttribute('id', 'googleSignInLink');
+  googleSignInLink.setAttribute('src', '/assets/btn_google_signin_dark_normal_web@2x.png'); // poner url
   googleSignInLink.setAttribute('alt', 'Google Sign-In');
   googleSignInOption.appendChild(googleSignInLink);
 
@@ -146,7 +147,6 @@ function login() {
     forgotPasswordLink,
     loginButton,
     googleSignInOption,
-    logoGoogle,
   );
   return section;
 }

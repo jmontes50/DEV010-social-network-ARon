@@ -40,6 +40,9 @@ function TimeLine() {
   sendButton.setAttribute('id', 'sendButton');
   sendButton.textContent = 'Enviar';
 
+  const commentList = document.createElement('ul');
+  commentList.setAttribute('id', 'commentList');
+
   let isEditing = false;
   let isLiking = false;
   let likes = 0;
@@ -158,11 +161,10 @@ function TimeLine() {
       commentButtonsDiv.appendChild(editLink);
       commentButtonsDiv.appendChild(deleteLink);
 
-      commentContainer.appendChild(userContainer.cloneNode(true));
       commentContainer.appendChild(commentButtonsDiv);
       commentContainer.appendChild(commentTextarea);
       commentContainer.appendChild(likeContainer);
-      commentsContainer.appendChild(commentContainer);
+      commentList.appendChild(commentContainer);
 
       commentList.classList.add('visible');
       commentList.style.display = 'block';
@@ -178,14 +180,16 @@ function TimeLine() {
     const commentText = commentInput.value;
     const postLi = postCreate(selectedImage, selectedUserName, commentText);
     commentList.appendChild(postLi);
+    // mandar post a DB (userID, icon, idLikes, post, time)
+    nameLike = '';
+    createPost(selectedUserName, selectedImage, nameLike, commentText);
+    commentInput.value = '';
   });
 
   sectionPosts.appendChild(userContainer);
   sectionPosts.appendChild(commentInput);
   sectionPosts.appendChild(sendButton);
-
-  document.body.appendChild(sectionPosts);
-  document.body.appendChild(commentsContainer);
+  sectionPosts.appendChild(commentList);
   section.append(
     logoTimeLine,
     btnClose,

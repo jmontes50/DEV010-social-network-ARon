@@ -197,14 +197,11 @@ font-size: large;
     margin-bottom: 1%;
 }
 
- #logo-google{
+#googleSignInLink{
     padding-inline: 1rem;
     margin-bottom: 2rem; 
+    width: 30%;
  }
-
- .iniciar-sesion-con-google{
-    font-size: smaller;
-}
 
 .eye{
     border:none;

@@ -7,9 +7,10 @@ import savePost from './db.js';
 const auth = getAuth(firebaseApp);
 
 function TimeLine() {
-  window.addEventListener('DOMContentLoaded', () => {
-    getPost();
-  });
+  /* window.addEventListener('DOMContentLoaded', () => {
+    // getPost();
+    const olderPost = getPost();
+    console.log(olderPost);
 
   const section = document.createElement('section');
   section.setAttribute('id', 'sectionTimeLine');
@@ -181,14 +182,20 @@ function TimeLine() {
     }
   }); */
 
+  // commentList.appendChild(olderPost);
   sendButton.addEventListener('click', () => {
     const commentText = commentInput.value;
     savePost(selectedUserName, selectedImage, commentText);
-    const postLi = postCreate(selectedImage, selectedUserName, commentText);
+    const postLi = postCreate(selectedImage, selectedUserName, likes, commentText);
     commentList.appendChild(postLi);
     // mandar post a DB (userID, icon, idLikes, post, time)
+    
+    const olderPost = getPost();
+    console.log(olderPost);
+
     nameLike = '';
     // createPost(selectedUserName, selectedImage, nameLike, commentText);
+
   });
 
   sectionPosts.appendChild(userContainer);

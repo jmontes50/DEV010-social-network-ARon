@@ -1,8 +1,9 @@
 import { getAuth } from 'firebase/auth';
 import firebaseApp from './firebase.js';
-import createPost from './firestoreCreate.js';
+// import createPost from './firestoreCreate.js';
 import postCreate from './postCreate.js';
 import getPost from './firestoreRecover.js';
+import savePost from './db.js';
 
 const auth = getAuth(firebaseApp);
 
@@ -44,9 +45,9 @@ function TimeLine() {
   const commentList = document.createElement('ul');
   commentList.setAttribute('id', 'commentList');
 
-  let isEditing = false;
-  let isLiking = false;
-  let likes = 0;
+  const isEditing = false;
+  const isLiking = false;
+  const likes = 0;
   let nameLike;
 
   const userContainer = document.createElement('div');
@@ -179,11 +180,12 @@ function TimeLine() {
 
   sendButton.addEventListener('click', () => {
     const commentText = commentInput.value;
+    savePost(selectedUserName, selectedImage, commentText);
     const postLi = postCreate(selectedImage, selectedUserName, likes, commentText);
     commentList.appendChild(postLi);
     // mandar post a DB (userID, icon, idLikes, post, time)
-    // nameLike = '';
-    createPost(selectedUserName, selectedImage, likes, commentText);
+    nameLike = '';
+    // createPost(selectedUserName, selectedImage, nameLike, commentText);
     getPost();
   });
 

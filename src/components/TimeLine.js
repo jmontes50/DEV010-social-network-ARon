@@ -1,5 +1,6 @@
 import { getAuth } from 'firebase/auth';
 import firebaseApp from './firebase.js';
+// import createPost from './firestoreCreate.js';
 import postCreate from './postCreate.js';
 import getPost from './firestoreRecover.js';
 import savePost from './db.js';
@@ -7,11 +8,6 @@ import savePost from './db.js';
 const auth = getAuth(firebaseApp);
 
 function TimeLine() {
-  /* window.addEventListener('DOMContentLoaded', () => {
-    // getPost();
-    const olderPost = getPost();
-    console.log(olderPost);
-
   const section = document.createElement('section');
   section.setAttribute('id', 'sectionTimeLine');
   section.setAttribute('class', 'timeLineStyle');
@@ -189,13 +185,20 @@ function TimeLine() {
     const postLi = postCreate(selectedImage, selectedUserName, likes, commentText);
     commentList.appendChild(postLi);
     // mandar post a DB (userID, icon, idLikes, post, time)
-    
-    const olderPost = getPost();
-    console.log(olderPost);
+  });
 
-    nameLike = '';
-    // createPost(selectedUserName, selectedImage, nameLike, commentText);
-
+  window.addEventListener('DOMContentLoaded', () => {
+    getPost().then((olderPosts) => {
+      olderPosts.forEach((oldPost) => {
+        const recoverID = oldPost.userID;
+        const recoverIcon = oldPost.icon;
+        const recoverPost = oldPost.post;
+        const recoverLikes = 0;
+        const recoverPID = oldPost.id;
+        const recoverLi = postCreate(recoverIcon, recoverID, recoverLikes, recoverPost, recoverPID);
+        commentList.appendChild(recoverLi);
+      });
+    });
   });
 
   sectionPosts.appendChild(userContainer);

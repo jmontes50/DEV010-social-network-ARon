@@ -1,7 +1,8 @@
-function postCreate(userImage, userName, likes, postText) {
+function postCreate(userImage, userName, likes, postText, idPost) {
   // console.log('entra a postCreate');
   // crear el li que contenga
   const liPost = document.createElement('li');
+  liPost.setAttribute('id', idPost);
   liPost.classList.add('commentContainer');
 
   // icono, nombre, botones de editar y borrar, post y boton de like

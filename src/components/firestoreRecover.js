@@ -2,17 +2,22 @@ import { getDocs, collection } from 'firebase/firestore';
 import { db } from './firebase.js';
 
 function getPost() {
-  const refPost = collection(db, 'posts');
-  getDocs(refPost)
+  const postRef = collection(db, 'dataBase2');
+  // const olderPosts = [];
+  return getDocs(postRef)
     .then((snapshot) => {
-      snapshot.forEach((doc) => {
-        console.log(doc.id, '=>', doc.data());
-      });
+      const olderPosts = snapshot.docs
+        .sort((a, b) => b.data().time - a.data().time)
+        .map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+      return olderPosts;
     })
     .catch((error) => {
       console.log(error);
     });
+  // console.log(olderPosts);
 }
 
-getPost();
 export default getPost;

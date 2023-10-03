@@ -1,9 +1,10 @@
 import createPost from './firestoreCreate';
 
-function postCreate(userImage, userName, postText) {
+function postCreate(userImage, userName, likes, postText, idPost) {
   // console.log('entra a postCreate');
   // crear el li que contenga
   const liPost = document.createElement('li');
+  liPost.setAttribute('id', idPost);
   liPost.classList.add('commentContainer');
   // icono, nombre, botones de editar y borrar, post y boton de like
   // ICONO
@@ -24,6 +25,13 @@ function postCreate(userImage, userName, postText) {
   const deleteLink = document.createElement('a');
   deleteLink.textContent = 'Borrar';
   deleteLink.classList.add('action-link');
+  // ELIMINAR POST
+  deleteLink.addEventListener('click', () => {
+    const shouldDelete = window.confirm('¿Estás seguro de que deseas borrar esta entrada?');
+    if (shouldDelete) {
+      liPost.remove();
+    }
+  });
   containerButtons.appendChild(editLink);
   containerButtons.appendChild(deleteLink);
   // AREA DEL POST
@@ -32,7 +40,6 @@ function postCreate(userImage, userName, postText) {
   commentTextarea.setAttribute('class', 'commentTextarea');
   commentTextarea.setAttribute('name', 'commentTextarea');
   commentTextarea.setAttribute('readonly', 'true');
-
   // BOTON DE LIKE
   const containerLikes = document.createElement('div');
   containerLikes.setAttribute('class', 'likeArea');
@@ -41,7 +48,7 @@ function postCreate(userImage, userName, postText) {
   btnLike.setAttribute('src', './assets/unlike.png');
   const sumLikes = document.createElement('span');
   sumLikes.setAttribute('id', 'sumLikes');
-  const likes = 0;
+  // const likes = 0;
   sumLikes.innerHTML = likes;
   containerLikes.appendChild(btnLike);
   containerLikes.appendChild(sumLikes);
@@ -54,6 +61,9 @@ function postCreate(userImage, userName, postText) {
   // liPost.appendChild(btnLike);
   // liPost.appendChild(sumLikes);
   liPost.appendChild(containerLikes);
+  liPost.appendChild(deleteLink);
+
   return liPost;
 }
+
 export default postCreate;

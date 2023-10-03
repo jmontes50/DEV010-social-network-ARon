@@ -4,55 +4,42 @@ import firebaseApp from './firebase.js';
 import postCreate from './postCreate.js';
 import getPost from './firestoreRecover.js';
 import savePost from './db.js';
-
 const auth = getAuth(firebaseApp);
-
 function TimeLine() {
   const section = document.createElement('section');
   section.setAttribute('id', 'sectionTimeLine');
   section.setAttribute('class', 'timeLineStyle');
-
   const logoTimeLine = document.createElement('img');
   logoTimeLine.setAttribute('id', 'logoTimeLine');
   logoTimeLine.setAttribute('class', 'timeLineLogo');
   logoTimeLine.setAttribute('src', './assets/logo256.png');
-
   logoTimeLine.addEventListener('click', () => {
     window.location.reload();
   });
-
   const btnClose = document.createElement('img');
   btnClose.setAttribute('id', 'btnClose');
   btnClose.setAttribute('src', './assets/close.png');
-
   btnClose.addEventListener('click', () => {
     window.location.href = './';
   });
-
   const sectionPosts = document.createElement('section');
   sectionPosts.setAttribute('id', 'sectionPosts');
   sectionPosts.setAttribute('class', 'postSection');
-
   const commentInput = document.createElement('textarea');
   commentInput.setAttribute('type', 'text');
   commentInput.setAttribute('id', 'commentInput');
   commentInput.setAttribute('placeholder', '¿Qué compartes hoy?');
-
   const sendButton = document.createElement('button');
   sendButton.setAttribute('id', 'sendButton');
   sendButton.textContent = 'Enviar';
-
   const commentList = document.createElement('ul');
   commentList.setAttribute('id', 'commentList');
-
   const isEditing = false;
   const isLiking = false;
   const likes = 0;
   let nameLike;
-
   const userContainer = document.createElement('div');
   userContainer.setAttribute('class', 'user-container');
-
   const selectedImage = localStorage.getItem('selectedImage');
   if (selectedImage) {
     const userImage = document.createElement('img');
@@ -64,7 +51,6 @@ function TimeLine() {
   } else {
     console.log('No se encontró una imagen de usuario en el localStorage.');
   }
-
   const selectedUserName = localStorage.getItem('selectedUserName');
   if (selectedUserName) {
     const userNameElement = document.createElement('p');
@@ -74,28 +60,23 @@ function TimeLine() {
   } else {
     console.log('No se encontró un nombre de usuario en el localStorage.');
   }
-
   const btnLike = document.createElement('img');
   btnLike.setAttribute('id', 'btnLike');
   btnLike.setAttribute('src', './assets/unlike.png');
-
   const sumLikes = document.createElement('span');
   sumLikes.setAttribute('id', 'sumLikes');
   sumLikes.innerHTML = likes;
-
   // cliks
   /* sendButton.addEventListener('click', () => {
     const commentText = commentInput.value;
     if (commentText.trim() !== '') {
       const commentContainer = document.createElement('li');
       commentContainer.setAttribute('class', 'commentContainer');
-
       const commentTextarea = document.createElement('textarea');
       commentTextarea.value = commentText;
       commentTextarea.setAttribute('class', 'commentTextarea');
       commentTextarea.setAttribute('name', 'commentTextarea');
       commentTextarea.setAttribute('readonly', 'true');
-
       commentTextarea.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' && !e.shiftKey) {
           e.preventDefault();
@@ -106,7 +87,6 @@ function TimeLine() {
           }
         }
       });
-
       const editLink = document.createElement('a');
       editLink.textContent = 'Editar';
       editLink.classList.add('action-link');
@@ -115,7 +95,6 @@ function TimeLine() {
         commentTextarea.removeAttribute('readonly');
         commentTextarea.focus();
       });
-
       const deleteLink = document.createElement('a');
       deleteLink.textContent = 'Borrar';
       deleteLink.classList.add('action-link');
@@ -125,20 +104,17 @@ function TimeLine() {
           commentContainer.remove();
         }
       });
-
       editLink.addEventListener('click', () => {
         isEditing = true;
         commentTextarea.removeAttribute('readonly');
         commentTextarea.focus();
       });
-
       deleteLink.addEventListener('click', () => {
         const shouldDelete = window.confirm('¿Estás seguro de que deseas borrar este comentario?');
         if (shouldDelete) {
           commentContainer.remove();
         }
       });
-
       btnLike.addEventListener('click', () => {
         if (!isLiking) {
           btnLike.setAttribute('src', './assets/like.png');
@@ -152,43 +128,47 @@ function TimeLine() {
         console.log(isLiking);
         sumLikes.innerHTML = likes;
       });
-
       const likeContainer = document.createElement('div');
       likeContainer.setAttribute('class', 'liking');
       likeContainer.appendChild(btnLike);
       likeContainer.appendChild(sumLikes);
-
       const commentButtonsDiv = document.createElement('div');
       commentButtonsDiv.setAttribute('class', 'commentButtons');
       commentButtonsDiv.appendChild(editLink);
       commentButtonsDiv.appendChild(deleteLink);
-
       commentContainer.appendChild(commentButtonsDiv);
       commentContainer.appendChild(commentTextarea);
       commentContainer.appendChild(likeContainer);
       commentList.appendChild(commentContainer);
-
       commentList.classList.add('visible');
       commentList.style.display = 'block';
       commentInput.value = '';
-
       // mandar post a DB (userID, icon, idLikes, post, time)
       nameLike = '';
       createPost(selectedUserName, selectedImage, nameLike, commentText);
     }
   }); */
-
+  // commentList.appendChild(olderPost);
   sendButton.addEventListener('click', () => {
     const commentText = commentInput.value;
     savePost(selectedUserName, selectedImage, commentText);
-    const postLi = postCreate(selectedImage, selectedUserName, commentText);
+    const postLi = postCreate(selectedImage, selectedUserName, likes, commentText);
     commentList.appendChild(postLi);
     // mandar post a DB (userID, icon, idLikes, post, time)
-    nameLike = '';
-    // createPost(selectedUserName, selectedImage, nameLike, commentText);
-    getPost();
   });
-
+  window.addEventListener('DOMContentLoaded', () => {
+    getPost().then((olderPosts) => {
+      olderPosts.forEach((oldPost) => {
+        const recoverID = oldPost.userID;
+        const recoverIcon = oldPost.icon;
+        const recoverPost = oldPost.post;
+        const recoverLikes = 0;
+        const recoverPID = oldPost.id;
+        const recoverLi = postCreate(recoverIcon, recoverID, recoverLikes, recoverPost, recoverPID);
+        commentList.appendChild(recoverLi);
+      });
+    });
+  });
   sectionPosts.appendChild(userContainer);
   sectionPosts.appendChild(commentInput);
   sectionPosts.appendChild(sendButton);
@@ -198,8 +178,6 @@ function TimeLine() {
     btnClose,
     sectionPosts,
   );
-
   return section;
 }
-
 export default TimeLine;

@@ -2,16 +2,16 @@ import { getDocs, collection, serverTimestamp } from 'firebase/firestore';
 import { db } from './firebase.js';
 
 function getPost() {
-  const postRef = collection(db, 'dataBase');
-  const olderPosts = [];
+  const postRef = collection(db, 'dataBase2');
+  // const olderPosts = [];
   return getDocs(postRef)
     .then((snapshot) => {
-      snapshot.forEach((doc) => {
-        const post = doc.data();
-        post.id = doc.id;
-        post.timestamp = serverTimestamp();
-        olderPosts.push(post);
-      });
+      const olderPosts = snapshot.docs
+        .sort((a, b) => b.data().time - a.data().time)
+        .map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
       return olderPosts;
     })
     .catch((error) => {
@@ -19,4 +19,5 @@ function getPost() {
     });
   // console.log(olderPosts);
 }
+
 export default getPost;

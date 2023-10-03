@@ -45,11 +45,6 @@ function TimeLine() {
   const commentList = document.createElement('ul');
   commentList.setAttribute('id', 'commentList');
 
-  const isEditing = false;
-  const isLiking = false;
-  const likes = 0;
-  let nameLike;
-
   const userContainer = document.createElement('div');
   userContainer.setAttribute('class', 'user-container');
 
@@ -75,13 +70,13 @@ function TimeLine() {
     console.log('No se encontró un nombre de usuario en el localStorage.');
   }
 
-  const btnLike = document.createElement('img');
+  /* const btnLike = document.createElement('img');
   btnLike.setAttribute('id', 'btnLike');
   btnLike.setAttribute('src', './assets/unlike.png');
 
   const sumLikes = document.createElement('span');
   sumLikes.setAttribute('id', 'sumLikes');
-  sumLikes.innerHTML = likes;
+  sumLikes.innerHTML = likes; */
 
   // cliks
   /* sendButton.addEventListener('click', () => {
@@ -178,15 +173,28 @@ function TimeLine() {
     }
   }); */
 
+  // commentList.appendChild(olderPost);
   sendButton.addEventListener('click', () => {
     const commentText = commentInput.value;
     savePost(selectedUserName, selectedImage, commentText);
-    const postLi = postCreate(selectedImage, selectedUserName, commentText);
+    const likes = 0;
+    const postLi = postCreate(selectedImage, selectedUserName, likes, commentText);
     commentList.appendChild(postLi);
     // mandar post a DB (userID, icon, idLikes, post, time)
-    nameLike = '';
-    // createPost(selectedUserName, selectedImage, nameLike, commentText);
-    getPost();
+  });
+
+  window.addEventListener('DOMContentLoaded', () => {
+    getPost().then((olderPosts) => {
+      olderPosts.forEach((oldPost) => {
+        const recoverID = oldPost.userID;
+        const recoverIcon = oldPost.icon;
+        const recoverPost = oldPost.post;
+        const recoverLikes = 0;
+        const recoverPID = oldPost.id;
+        const recoverLi = postCreate(recoverIcon, recoverID, recoverLikes, recoverPost, recoverPID);
+        commentList.appendChild(recoverLi);
+      });
+    });
   });
 
   sectionPosts.appendChild(userContainer);

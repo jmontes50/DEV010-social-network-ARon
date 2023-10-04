@@ -47,7 +47,7 @@ Tamaños disponibles:
 
   Para su diseño escogimos una paleta de colores azules con acentos en amarillo, que busca generar tranquilidad y confianza en los usuarios.
   
-  ![paleta-de-colores-azules](/src/img/cvetovaya-palitra-2932.pngcvetovaya-palitra-2932.png)
+  ![paleta-de-colores-azules](src/img/cvetovaya-palitra-2932.png)
 
    Siendo una red artistica era probable que los usuarios usaran colores muy variados en sus post -obviamente, en versiones futuras de la interfaz - y por ello, escogimos un diseño plano y sencillo que no compitiera en colores o formas con esas futuras publicaciones. 
 

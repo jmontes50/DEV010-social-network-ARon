@@ -61,14 +61,6 @@ function TimeLine() {
     console.log('No se encontró un nombre de usuario en el localStorage.');
   }
 
-  /* const btnLike = document.createElement('img');
-  btnLike.setAttribute('id', 'btnLike');
-  btnLike.setAttribute('src', './assets/unlike.png');
-  const sumLikes = document.createElement('span');
-  sumLikes.setAttribute('id', 'sumLikes');
-  sumLikes.innerHTML = likes; */
-
-
   // cliks
   /* sendButton.addEventListener('click', () => {
     const commentText = commentInput.value;
@@ -171,8 +163,10 @@ function TimeLine() {
         const rcvrPost = oldPost.post;
         const rcvrLikes = oldPost.likes;
         const rcvrPID = oldPost.id;
-        const rcvrWhoLikes = oldPost.whoLikes;
-        const recoverLi = postCreate(rcvrIcon, rcvrID, rcvrLikes, rcvrPost, rcvrPID, rcvrWhoLikes);
+        // asegurarnos que el array de likes tenga datos para usar el some
+        const whoLikes = oldPost.whoLikes || [];
+        const isLiking = whoLikes.some((user) => user === selectedUserName);
+        const recoverLi = postCreate(rcvrIcon, rcvrID, rcvrLikes, rcvrPost, rcvrPID, isLiking);
         commentList.appendChild(recoverLi);
       });
     });

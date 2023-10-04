@@ -11,9 +11,11 @@ function eliminarPost(docID, selectedUserName) {
         return Promise.reject('No existe el post que intentas eliminar');
       }
 
-      const postUserName = postDoc.data().userName;
-
-      if (postUserName !== selectedUserName) {
+      const userName = postDoc.data().userID;
+      console.log('userID:', userID);
+      console.log('selectedUserName:', selectedUserName);
+      if (userName !== selectedUserName) {
+        console.log('La propiedad userName no está presente en el documento.');
         console.log('No tienes permisos para eliminar este post');
         return Promise.reject('No tienes permisos para eliminar este post');
       }
@@ -26,10 +28,6 @@ function eliminarPost(docID, selectedUserName) {
           console.error('Error al eliminar el post:', error);
           return Promise.reject(error);
         });
-    })
-    .catch((error) => {
-      console.error('Error al obtener el documento:', error);
-      return Promise.reject(error);
     });
 }
 

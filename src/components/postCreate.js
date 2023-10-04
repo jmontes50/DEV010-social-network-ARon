@@ -65,7 +65,7 @@ function postCreate(userImage, userName, numberLikes, postText, idPost) {
     if (shouldDelete) {
       postId = liPost.id;
       const selectedUserName = localStorage.getItem('selectedUserName');
-
+      console.log('selectedUserName:', selectedUserName);
       eliminarPost(postId, selectedUserName)
         .then(() => {
           liPost.remove();

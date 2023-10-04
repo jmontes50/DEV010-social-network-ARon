@@ -331,7 +331,7 @@ h3{
    margin-right: 5%;
 }
 
-#btnLike{
+.btnLike{
     width: 44px;
     height: 44px;
 }
@@ -491,7 +491,7 @@ h3{
      margin-right: 0.5rem;
      font-size: x-small;
     }
-    #btnLike {
+    .btnLike {
         width: 24px;
         height: 24px;
       }

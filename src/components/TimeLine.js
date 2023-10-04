@@ -4,7 +4,7 @@ import firebaseApp from './firebase.js';
 import postCreate from './postCreate.js';
 import getPost from './firestoreRecover.js';
 import savePost from './db.js';
-import likes from './likes.js';
+import putID from './likes.js';
 
 const auth = getAuth(firebaseApp);
 
@@ -180,29 +180,14 @@ function TimeLine() {
   window.addEventListener('DOMContentLoaded', () => {
     getPost().then((olderPosts) => {
       olderPosts.forEach((oldPost) => {
-        const recoverID = oldPost.userID;
-        const recoverIcon = oldPost.icon;
-        const recoverPost = oldPost.post;
-        const recoverLikes = 0;
-        const recoverPID = oldPost.id;
-        const recoverLi = postCreate(recoverIcon, recoverID, recoverLikes, recoverPost, recoverPID);
+        const rcvrID = oldPost.userID;
+        const rcvrIcon = oldPost.icon;
+        const rcvrPost = oldPost.post;
+        const rcvrLikes = oldPost.likes;
+        const rcvrPID = oldPost.id;
+        const rcvrWhoLikes = oldPost.whoLikes;
+        const recoverLi = postCreate(rcvrIcon, rcvrID, rcvrLikes, rcvrPost, rcvrPID, rcvrWhoLikes);
         commentList.appendChild(recoverLi);
-
-        // LIKES
-        /* const btnLikeE1 = document.getElementById('btnLike');
-        let isLiking = false;
-        const numberLikes = recoverLikes;
-        btnLikeE1.addEventListener('click', () => {
-          if (!isLiking) {
-            btnLikeE1.setAttribute('src', './assets/like.png');
-            likes(isLiking, numberLikes, recoverPID, selectedUserName, recoverID);
-            isLiking = true;
-          } else {
-            btnLikeE1.setAttribute('src', './assets/unLike.png');
-            likes(isLiking, numberLikes);
-            isLiking = false;
-          }
-        }); */
       });
     });
   });

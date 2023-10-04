@@ -1,23 +1,28 @@
-// likes(isLiking, numberLikes, recoverPID, selectedUserName);
-import { doc, updateDoc } from 'firebase/firestore';
+import {
+  arrayUnion, doc, updateDoc, arrayRemove,
+} from 'firebase/firestore';
 import { db } from './firebase.js';
 
-function likes(isLike, likesNumber, idPostRecover, userIDSelected, recoverID) {
-  console.log(isLike);
-  console.log(likesNumber);
-  console.log(idPostRecover);
-  console.log(userIDSelected);
-  console.log(recoverID);
+function likes(idPost, likesNumber, isLike, whoLike) {
+  const postRef = doc(db, 'dataBase2', idPost);
   let nbLikes = Number(likesNumber);
   if (isLike) {
-    if (userIDSelected !== recoverID) {
+    if (whoLike) {
       nbLikes += 1;
+      updateDoc(postRef, {
+        likes: nbLikes,
+        whoLikes: arrayUnion(whoLike),
+      });
     }
+  } else if (whoLike) {
+    nbLikes -= 1;
+    if (nbLikes < 0) { nbLikes = 0; }
+    updateDoc(postRef, {
+      likes: nbLikes,
+      whoLikes: arrayRemove(whoLike),
+    });
   }
-  const postRef = doc(db, 'dataBase2', idPostRecover);
-  updateDoc(postRef, {
-    likes: nbLikes,
-  });
+  return nbLikes;
 }
 
 export default likes;

@@ -1,4 +1,4 @@
-import { getDocs, collection, serverTimestamp } from 'firebase/firestore';
+import { getDocs, collection } from 'firebase/firestore';
 import { db } from './firebase.js';
 
 function getPost() {

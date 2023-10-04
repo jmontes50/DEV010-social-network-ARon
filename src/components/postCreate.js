@@ -3,13 +3,9 @@ import likes from './likes.js';
 import eliminarPost from './firestoreDelete';
 
 const selectedUserName = localStorage.getItem('selectedUserName');
-let isLiking = false;
 
-function postCreate(userImage, userName, numberLikes, postText, idPost, whoLikes) {
-  // console.log(whoLikes);
-  // console.log(array.some(even));
-  // [2, 5, 8, 1, 4].some((elem) => elem > 10);
-  // console.log(whoLikes.some(selectedUserName) => selectedUserName === userName);
+function postCreate(userImage, userName, numberLikes, postText, idPost, isLiking) {
+  let isLike = isLiking;
   // crear el li que contenga
   const liPost = document.createElement('li');
   liPost.setAttribute('id', idPost);
@@ -67,54 +63,55 @@ function postCreate(userImage, userName, numberLikes, postText, idPost, whoLikes
         isEditing = false;
       }
     }
-  })
+  });
 
-  // FUNCION DE BOTON LIKE
   // ACCION DE BORRAR
   deleteLink.addEventListener('click', () => {
-    const shouldDelete = window.confirm('¿Estás seguro de que deseas borrar este comentario?');
-    if (shouldDelete) {
-      postId = liPost.id;
-      const selectedUserName = localStorage.getItem('selectedUserName');
-      console.log('selectedUserName:', selectedUserName);
-      eliminarPost(postId, selectedUserName)
-        .then(() => {
-          liPost.remove();
-          console.log('Post eliminado correctamente');
-        })
-        .catch((error) => {
-          console.error('Error al eliminar el post:', error);
-        });
+    if (selectedUserName === userName) {
+      const shouldDelete = window.confirm('¿Estás seguro de que deseas borrar este comentario?');
+      if (shouldDelete) {
+        postId = liPost.id;
+        eliminarPost(postId)
+          .then(() => {
+            liPost.remove();
+            console.log('Post eliminado correctamente');
+          })
+          .catch((error) => {
+            console.error('Error al eliminar el post:', error);
+          });
+      }
     }
   });
   // BOTON DE LIKE
-  let isLiking = false;
-
   const containerLikes = document.createElement('div');
   containerLikes.setAttribute('class', 'likeArea');
   const btnLike = document.createElement('img');
   btnLike.setAttribute('id', idPost);
   btnLike.classList.add('btnLike');
-  btnLike.setAttribute('src', './assets/unlike.png');
+  if (isLiking) {
+    btnLike.setAttribute('src', './assets/like.png');
+  } else {
+    btnLike.setAttribute('src', './assets/unlike.png');
+  }
   const sumLikes = document.createElement('span');
   sumLikes.setAttribute('id', 'sumLikes');
   sumLikes.innerHTML = numberLikes;
 
   let lkNumber;
   btnLike.addEventListener('click', () => {
-    if (!isLiking) {
+    if (!isLike) {
       if (selectedUserName !== userName) {
         btnLike.setAttribute('src', './assets/like.png');
-        isLiking = true;
+        isLike = true;
         lkNumber = sumLikes.textContent;
-        const newLikes = likes(btnLike.id, lkNumber, isLiking, selectedUserName);
+        const newLikes = likes(btnLike.id, lkNumber, isLike, selectedUserName);
         sumLikes.innerHTML = newLikes;
       }
     } else {
       btnLike.setAttribute('src', './assets/unLike.png');
-      isLiking = false;
+      isLike = false;
       lkNumber = sumLikes.textContent;
-      const newLikes = likes(btnLike.id, numberLikes, isLiking);
+      const newLikes = likes(btnLike.id, lkNumber, isLike, selectedUserName);
       sumLikes.innerHTML = newLikes;
     }
   });
@@ -124,13 +121,8 @@ function postCreate(userImage, userName, numberLikes, postText, idPost, whoLikes
   liPost.appendChild(imgUser);
   liPost.appendChild(nameUser);
   liPost.appendChild(containerButtons);
-  // liPost.appendChild(editLink);
-  // liPost.appendChild(deleteLink);
   liPost.appendChild(commentTextarea);
-  // liPost.appendChild(btnLike);
-  // liPost.appendChild(sumLikes);
   liPost.appendChild(containerLikes);
-  liPost.appendChild(deleteLink);
 
   return liPost;
 }

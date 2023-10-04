@@ -76,7 +76,6 @@ function postCreate(userImage, userName, numberLikes, postText, idPost) {
         });
     }
   });
-
   // BOTON DE LIKE
   let isLiking = false;
   const containerLikes = document.createElement('div');

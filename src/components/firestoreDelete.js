@@ -1,6 +1,4 @@
-import {
-  doc, deleteDoc, getDoc,
-} from 'firebase/firestore';
+import { doc, deleteDoc, getDoc } from 'firebase/firestore';
 import { db } from './firebase.js';
 
 function eliminarPost(docID, selectedUserName) {
@@ -8,17 +6,29 @@ function eliminarPost(docID, selectedUserName) {
 
   return getDoc(postRef)
     .then((postDoc) => {
-      if (postDoc.exists() && postDoc.data().userName === selectedUserName) {
-        return deleteDoc(postRef);
+      if (!postDoc.exists()) {
+        console.log('No existe el post que intentas eliminar');
+        return Promise.reject('No existe el post que intentas eliminar');
       }
-      console.log('No tienes permisos para eliminar este post');
-      return Promise.reject('No tienes permisos para eliminar este post');
-    })
-    .then(() => {
-      console.log('Post eliminado correctamente');
+
+      const postUserName = postDoc.data().userName;
+
+      if (postUserName !== selectedUserName) {
+        console.log('No tienes permisos para eliminar este post');
+        return Promise.reject('No tienes permisos para eliminar este post');
+      }
+
+      return deleteDoc(postRef)
+        .then(() => {
+          console.log('Post eliminado correctamente');
+        })
+        .catch((error) => {
+          console.error('Error al eliminar el post:', error);
+          return Promise.reject(error);
+        });
     })
     .catch((error) => {
-      console.error('Error al eliminar el post:', error);
+      console.error('Error al obtener el documento:', error);
       return Promise.reject(error);
     });
 }

@@ -2,8 +2,14 @@ import editPost from './firestoreEdit';
 import likes from './likes.js';
 import eliminarPost from './firestoreDelete';
 
-function postCreate(userImage, userName, numberLikes, postText, idPost) {
-  // console.log('entra a postCreate');
+const selectedUserName = localStorage.getItem('selectedUserName');
+let isLiking = false;
+
+function postCreate(userImage, userName, numberLikes, postText, idPost, whoLikes) {
+  // console.log(whoLikes);
+  // console.log(array.some(even));
+  // [2, 5, 8, 1, 4].some((elem) => elem > 10);
+  // console.log(whoLikes.some(selectedUserName) => selectedUserName === userName);
   // crear el li que contenga
   const liPost = document.createElement('li');
   liPost.setAttribute('id', idPost);
@@ -27,6 +33,7 @@ function postCreate(userImage, userName, numberLikes, postText, idPost) {
   deleteLink.classList.add('action-link');
 
   const editLink = document.createElement('a');
+  editLink.setAttribute('id', 'editLink');
   editLink.textContent = 'Editar';
   editLink.classList.add('action-link');
   containerButtons.appendChild(editLink);
@@ -42,10 +49,12 @@ function postCreate(userImage, userName, numberLikes, postText, idPost) {
   let postId;
   let isEditing = false;
   editLink.addEventListener('click', () => {
-    postId = liPost.id;
-    isEditing = true;
-    commentTextarea.removeAttribute('readonly');
-    commentTextarea.focus();
+    if (selectedUserName === userName) {
+      postId = liPost.id;
+      isEditing = true;
+      commentTextarea.removeAttribute('readonly');
+      commentTextarea.focus();
+    }
   });
   commentTextarea.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -58,7 +67,9 @@ function postCreate(userImage, userName, numberLikes, postText, idPost) {
         isEditing = false;
       }
     }
-  });
+  })
+
+  // FUNCION DE BOTON LIKE
   // ACCION DE BORRAR
   deleteLink.addEventListener('click', () => {
     const shouldDelete = window.confirm('¿Estás seguro de que deseas borrar este comentario?');
@@ -78,23 +89,33 @@ function postCreate(userImage, userName, numberLikes, postText, idPost) {
   });
   // BOTON DE LIKE
   let isLiking = false;
+
   const containerLikes = document.createElement('div');
   containerLikes.setAttribute('class', 'likeArea');
   const btnLike = document.createElement('img');
-  btnLike.setAttribute('id', 'btnLike');
+  btnLike.setAttribute('id', idPost);
+  btnLike.classList.add('btnLike');
   btnLike.setAttribute('src', './assets/unlike.png');
   const sumLikes = document.createElement('span');
   sumLikes.setAttribute('id', 'sumLikes');
   sumLikes.innerHTML = numberLikes;
+
+  let lkNumber;
   btnLike.addEventListener('click', () => {
     if (!isLiking) {
-      btnLike.setAttribute('src', './assets/like.png');
-      likes(isLiking, numberLikes);
-      isLiking = true;
+      if (selectedUserName !== userName) {
+        btnLike.setAttribute('src', './assets/like.png');
+        isLiking = true;
+        lkNumber = sumLikes.textContent;
+        const newLikes = likes(btnLike.id, lkNumber, isLiking, selectedUserName);
+        sumLikes.innerHTML = newLikes;
+      }
     } else {
       btnLike.setAttribute('src', './assets/unLike.png');
-      likes(isLiking, numberLikes);
       isLiking = false;
+      lkNumber = sumLikes.textContent;
+      const newLikes = likes(btnLike.id, numberLikes, isLiking);
+      sumLikes.innerHTML = newLikes;
     }
   });
 

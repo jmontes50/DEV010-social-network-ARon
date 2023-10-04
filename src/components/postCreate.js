@@ -1,5 +1,6 @@
 import editPost from './firestoreEdit';
 import likes from './likes.js';
+import eliminarPost from './firestoreDelete';
 
 function postCreate(userImage, userName, numberLikes, postText, idPost) {
   // console.log('entra a postCreate');
@@ -7,19 +8,16 @@ function postCreate(userImage, userName, numberLikes, postText, idPost) {
   const liPost = document.createElement('li');
   liPost.setAttribute('id', idPost);
   liPost.classList.add('commentContainer');
-
   // icono, nombre, botones de editar y borrar, post y boton de like
   // ICONO
   const imgUser = document.createElement('img');
   imgUser.setAttribute('id', 'userImage');
   imgUser.setAttribute('class', 'userImagePost');
   imgUser.setAttribute('src', userImage);
-
   // NOMBRE
   const nameUser = document.createElement('p');
   nameUser.textContent = userName;
   nameUser.setAttribute('class', 'user-name');
-
   // BOTONES DE EDITAR Y BORRAR
   const containerButtons = document.createElement('div');
   containerButtons.setAttribute('class', 'postButtons');
@@ -33,7 +31,6 @@ function postCreate(userImage, userName, numberLikes, postText, idPost) {
   editLink.classList.add('action-link');
   containerButtons.appendChild(editLink);
   containerButtons.appendChild(deleteLink);
-
   // AREA DEL POST
   const commentTextarea = document.createElement('textarea');
   commentTextarea.value = postText;
@@ -62,12 +59,27 @@ function postCreate(userImage, userName, numberLikes, postText, idPost) {
       }
     }
   });
-
+  // ACCION DE BORRAR
+  deleteLink.addEventListener('click', () => {
+    const shouldDelete = window.confirm('¿Estás seguro de que deseas borrar este comentario?');
+    if (shouldDelete) {
+      postId = liPost.id;
+      const selectedUserName = localStorage.getItem('selectedUserName');
+      console.log('selectedUserName:', selectedUserName);
+      eliminarPost(postId, selectedUserName)
+        .then(() => {
+          liPost.remove();
+          console.log('Post eliminado correctamente');
+        })
+        .catch((error) => {
+          console.error('Error al eliminar el post:', error);
+        });
+    }
+  });
   // BOTON DE LIKE
   let isLiking = false;
   const containerLikes = document.createElement('div');
   containerLikes.setAttribute('class', 'likeArea');
-
   const btnLike = document.createElement('img');
   btnLike.setAttribute('id', 'btnLike');
   btnLike.setAttribute('src', './assets/unlike.png');
@@ -88,7 +100,6 @@ function postCreate(userImage, userName, numberLikes, postText, idPost) {
 
   containerLikes.appendChild(btnLike);
   containerLikes.appendChild(sumLikes);
-
   liPost.appendChild(imgUser);
   liPost.appendChild(nameUser);
   liPost.appendChild(containerButtons);
@@ -98,6 +109,7 @@ function postCreate(userImage, userName, numberLikes, postText, idPost) {
   // liPost.appendChild(btnLike);
   // liPost.appendChild(sumLikes);
   liPost.appendChild(containerLikes);
+  liPost.appendChild(deleteLink);
 
   return liPost;
 }

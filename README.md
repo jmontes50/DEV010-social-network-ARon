@@ -57,6 +57,8 @@ Tamaños disponibles:
 
 ## Historias de usuario (Vistas y funcionalidades)
 
+![vistas de la app](src/img/visuals.jpg)
+
 En esta parte, mostrare capturas de pantalla de las vistas y los diagramas de flujo de los procesos. 
 
 * _Login_ con Firebase:

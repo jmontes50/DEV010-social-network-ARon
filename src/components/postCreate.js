@@ -29,6 +29,7 @@ function postCreate(userImage, userName, numberLikes, postText, idPost) {
   deleteLink.classList.add('action-link');
 
   const editLink = document.createElement('a');
+  editLink.setAttribute('id', 'editLink');
   editLink.textContent = 'Editar';
   editLink.classList.add('action-link');
   containerButtons.appendChild(editLink);
@@ -63,8 +64,7 @@ function postCreate(userImage, userName, numberLikes, postText, idPost) {
     }
   });
 
-  // BOTON DE LIKE
-  let isLiking = false;
+  // FUNCION DE BOTON LIKE
   const containerLikes = document.createElement('div');
   containerLikes.setAttribute('class', 'likeArea');
 
@@ -74,17 +74,6 @@ function postCreate(userImage, userName, numberLikes, postText, idPost) {
   const sumLikes = document.createElement('span');
   sumLikes.setAttribute('id', 'sumLikes');
   sumLikes.innerHTML = numberLikes;
-  btnLike.addEventListener('click', () => {
-    if (!isLiking) {
-      btnLike.setAttribute('src', './assets/like.png');
-      likes(isLiking, numberLikes);
-      isLiking = true;
-    } else {
-      btnLike.setAttribute('src', './assets/unLike.png');
-      likes(isLiking, numberLikes);
-      isLiking = false;
-    }
-  });
 
   containerLikes.appendChild(btnLike);
   containerLikes.appendChild(sumLikes);

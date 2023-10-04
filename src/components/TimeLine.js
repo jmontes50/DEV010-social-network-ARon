@@ -4,6 +4,7 @@ import firebaseApp from './firebase.js';
 import postCreate from './postCreate.js';
 import getPost from './firestoreRecover.js';
 import savePost from './db.js';
+import likes from './likes.js';
 
 const auth = getAuth(firebaseApp);
 
@@ -69,14 +70,6 @@ function TimeLine() {
   } else {
     console.log('No se encontró un nombre de usuario en el localStorage.');
   }
-
-  /* const btnLike = document.createElement('img');
-  btnLike.setAttribute('id', 'btnLike');
-  btnLike.setAttribute('src', './assets/unlike.png');
-
-  const sumLikes = document.createElement('span');
-  sumLikes.setAttribute('id', 'sumLikes');
-  sumLikes.innerHTML = likes; */
 
   // cliks
   /* sendButton.addEventListener('click', () => {
@@ -179,8 +172,9 @@ function TimeLine() {
     savePost(selectedUserName, selectedImage, commentText);
     const likes = 0;
     const postLi = postCreate(selectedImage, selectedUserName, likes, commentText);
-    commentList.appendChild(postLi);
-    // mandar post a DB (userID, icon, idLikes, post, time)
+    commentList.prepend(postLi);
+    commentInput.value = '';
+    // commentList.appendChild(postLi);
   });
 
   window.addEventListener('DOMContentLoaded', () => {
@@ -193,6 +187,22 @@ function TimeLine() {
         const recoverPID = oldPost.id;
         const recoverLi = postCreate(recoverIcon, recoverID, recoverLikes, recoverPost, recoverPID);
         commentList.appendChild(recoverLi);
+
+        // LIKES
+        /* const btnLikeE1 = document.getElementById('btnLike');
+        let isLiking = false;
+        const numberLikes = recoverLikes;
+        btnLikeE1.addEventListener('click', () => {
+          if (!isLiking) {
+            btnLikeE1.setAttribute('src', './assets/like.png');
+            likes(isLiking, numberLikes, recoverPID, selectedUserName, recoverID);
+            isLiking = true;
+          } else {
+            btnLikeE1.setAttribute('src', './assets/unLike.png');
+            likes(isLiking, numberLikes);
+            isLiking = false;
+          }
+        }); */
       });
     });
   });

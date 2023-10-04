@@ -1,44 +1,26 @@
 import {
-  doc, updateDoc, arrayRemove, collection, getDoc, addDoc, serverTimestamp,
+  doc, deleteDoc, getDoc,
 } from 'firebase/firestore';
 import { db } from './firebase.js';
 
-const eliminarPost = (idPost) => new Promise((resolve, reject) => {
-  const postRef = doc(db, 'posts', idPost);
-  const deletedPostsCollection = collection(db, 'deletedPosts');
+function eliminarPost(docID, selectedUserName) {
+  const postRef = doc(db, 'dataBase2', docID);
 
-  getDoc(postRef)
-    .then((postSnapshot) => {
-      if (!postSnapshot.exists()) {
-        reject(new Error('El post no existe.'));
-        return;
+  return getDoc(postRef)
+    .then((postDoc) => {
+      if (postDoc.exists() && postDoc.data().userName === selectedUserName) {
+        return deleteDoc(postRef);
       }
-      const postData = postSnapshot.data();
-
-      updateDoc(postRef, {
-        autor: arrayRemove(postData.userID),
-        icono: arrayRemove(postData.icon),
-        likes: arrayRemove(postData.idLikes),
-        post: arrayRemove(postData.post),
-      })
-        .then(() => {
-          console.log('post eliminado correctamente y anadido a la colecion de eliminados.');
-          addDoc(deletedPostsCollection, {
-            ...postData,
-            deletedAt: serverTimestamp(),
-          })
-            .then(() => {
-              console.log('Post añadido a la colección de eliminados.');
-              resolve();
-            });
-        })
-        .catch((error) => {
-          reject(new Error(`Error al agregar el post a la coleccion de eliminados: ${error.message}`));
-        });
+      console.log('No tienes permisos para eliminar este post');
+      return Promise.reject('No tienes permisos para eliminar este post');
+    })
+    .then(() => {
+      console.log('Post eliminado correctamente');
     })
     .catch((error) => {
-      reject(new Error(`Error al actualizar el post: ${error.message}`));
+      console.error('Error al eliminar el post:', error);
+      return Promise.reject(error);
     });
-});
+}
 
 export default eliminarPost;

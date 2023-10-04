@@ -1,5 +1,6 @@
 import editPost from './firestoreEdit';
 import likes from './likes.js';
+import eliminarPost from './firestoreDelete';
 
 function postCreate(userImage, userName, numberLikes, postText, idPost) {
   // console.log('entra a postCreate');
@@ -56,6 +57,23 @@ function postCreate(userImage, userName, numberLikes, postText, idPost) {
         commentTextarea.blur();
         isEditing = false;
       }
+    }
+  });
+  // ACCION DE BORRAR
+  deleteLink.addEventListener('click', () => {
+    const shouldDelete = window.confirm('¿Estás seguro de que deseas borrar este comentario?');
+    if (shouldDelete) {
+      postId = liPost.id;
+      const selectedUserName = localStorage.getItem('selectedUserName');
+
+      eliminarPost(postId, selectedUserName)
+        .then(() => {
+          liPost.remove();
+          console.log('Post eliminado correctamente');
+        })
+        .catch((error) => {
+          console.error('Error al eliminar el post:', error);
+        });
     }
   });
 

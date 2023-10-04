@@ -23,7 +23,7 @@ function postCreate(userImage, userName, numberLikes, postText, idPost, whoLikes
   // NOMBRE
   const nameUser = document.createElement('p');
   nameUser.textContent = userName;
-  nameUser.setAttribute('class', 'user-name');
+  nameUser.setAttribute('class', 'userNamePost');
   // BOTONES DE EDITAR Y BORRAR
   const containerButtons = document.createElement('div');
   containerButtons.setAttribute('class', 'postButtons');
@@ -130,7 +130,7 @@ function postCreate(userImage, userName, numberLikes, postText, idPost, whoLikes
   // liPost.appendChild(btnLike);
   // liPost.appendChild(sumLikes);
   liPost.appendChild(containerLikes);
-  liPost.appendChild(deleteLink);
+  //liPost.appendChild(deleteLink);
 
   return liPost;
 }

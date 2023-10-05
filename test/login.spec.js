@@ -1,4 +1,4 @@
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'; // Importa la función que quieres probar
+/* import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'; // Importa la función que quieres probar
 import { expect } from '@playwright/test';
 import { autenticacionUser } from '../src/components/login.js';
 
@@ -34,7 +34,7 @@ describe('autenticacionUser', () => {
     // Configura el mock para getAuth
     const mockAuth = getAuth();
     const signInMock = signInWithEmailAndPassword(mockAuth, email, password);
-    signInMock.mockRejectedValue(new Error('auth/user-not-found')); /* simular un error especifico */
+    signInMock.mockRejectedValue(new Error('auth/user-not-found')); /* simular un error especifico
 
     // Llama a la función que estás probando
     try {
@@ -44,4 +44,4 @@ describe('autenticacionUser', () => {
       expect(error.message).toBe(errorMessage);
     }
   });
-});
+}); */

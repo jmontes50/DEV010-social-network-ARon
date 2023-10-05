@@ -57,7 +57,7 @@ Tamaños disponibles:
 
 ## Historias de usuario (Vistas y funcionalidades)
 
-En esta parte, mostrare capturas de pantalla de las vistas y los diagramas de flujo de los procesos. 
+![vistas de la app](src/img/visuals.jpg)
 
 * _Login_ con Firebase:
   -  Creación de cuenta de acceso y autenticación con cuenta de correo y contraseña, y también con una cuenta de Google.

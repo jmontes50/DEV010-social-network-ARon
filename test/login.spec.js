@@ -1,12 +1,25 @@
-/* import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'; // Importa la función que quieres probar
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'; // Importa la función que quieres probar
 import { expect } from '@playwright/test';
-import { autenticacionUser } from '../src/components/login.js';
+import login, { autenticacionUser } from '../src/components/login.js';
 
 // Creamos un mock para getAuth
 jest.mock('firebase/auth', () => ({
   getAuth: jest.fn(),
   signInWithEmailAndPassword: jest.fn(),
 }));
+
+describe('login', () => {
+  it('verificamos que sea una función', () => {
+    expect(typeof login).toBe('function');
+  });
+
+  it('la función pinta un documento HTML', () => {
+    const result = login();
+    expect(result instanceof HTMLElement).toBe(true);
+  });
+});
+
+/* TODO Como testeamos una funcion dentro de otra funcion?
 
 describe('autenticacionUser', () => {
   it('deberia autenticar al usuario correctamente', async () => {

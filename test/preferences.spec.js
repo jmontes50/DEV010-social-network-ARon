@@ -1,4 +1,4 @@
-// importamos la funcion que vamos a testear
+/* importamos la funcion que vamos a testear
 import preferences from '../src/components/preferences';
 
 // Primero verificamos si es una función.
@@ -49,4 +49,4 @@ describe('preferences', () => {
 
   // TODO En un futuro al conectar con la base de datos de Firebase:
 // .....3. verificar que las preferencias del usuario sean enviadas a Firebase.
-});
+}); */

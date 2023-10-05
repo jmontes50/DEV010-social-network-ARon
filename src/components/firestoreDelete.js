@@ -12,4 +12,5 @@ function eliminarPost(docID) {
       return Promise.reject(error);
     });
 }
+
 export default eliminarPost;

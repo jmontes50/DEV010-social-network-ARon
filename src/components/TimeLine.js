@@ -1,13 +1,10 @@
 import { getAuth } from 'firebase/auth';
 import firebaseApp from './firebase.js';
-// import createPost from './firestoreCreate.js';
 import postCreate from './postCreate.js';
 import getPost from './firestoreRecover.js';
 import savePost from './db.js';
-import putID from './likes.js';
 
-
-const auth = getAuth(firebaseApp);
+getAuth(firebaseApp);
 function TimeLine() {
   const section = document.createElement('section');
   section.setAttribute('id', 'sectionTimeLine');
@@ -46,10 +43,10 @@ function TimeLine() {
     userImage.setAttribute('id', 'userImage');
     userImage.setAttribute('class', 'user-image');
     userImage.setAttribute('src', selectedImage);
-    console.log('Imagen del usuario establecida correctamente:', selectedImage);
+    // console.log('Imagen del usuario establecida correctamente:', selectedImage);
     userContainer.appendChild(userImage); // Agregar userImage al userContainer
   } else {
-    console.log('No se encontró una imagen de usuario en el localStorage.');
+    // console.log('No se encontró una imagen de usuario en el localStorage.');
   }
   const selectedUserName = localStorage.getItem('selectedUserName');
   if (selectedUserName) {
@@ -58,91 +55,8 @@ function TimeLine() {
     userNameElement.setAttribute('class', 'user-name');
     userContainer.appendChild(userNameElement); // Agregar userNameElement al userContainer
   } else {
-    console.log('No se encontró un nombre de usuario en el localStorage.');
+    // console.log('No se encontró un nombre de usuario en el localStorage.');
   }
-
-  // cliks
-  /* sendButton.addEventListener('click', () => {
-    const commentText = commentInput.value;
-    if (commentText.trim() !== '') {
-      const commentContainer = document.createElement('li');
-      commentContainer.setAttribute('class', 'commentContainer');
-      const commentTextarea = document.createElement('textarea');
-      commentTextarea.value = commentText;
-      commentTextarea.setAttribute('class', 'commentTextarea');
-      commentTextarea.setAttribute('name', 'commentTextarea');
-      commentTextarea.setAttribute('readonly', 'true');
-      commentTextarea.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' && !e.shiftKey) {
-          e.preventDefault();
-          if (isEditing) {
-            isEditing = false;
-            commentTextarea.setAttribute('readonly', 'true');
-            commentTextarea.blur();
-          }
-        }
-      });
-      const editLink = document.createElement('a');
-      editLink.textContent = 'Editar';
-      editLink.classList.add('action-link');
-      editLink.addEventListener('click', () => {
-        isEditing = true;
-        commentTextarea.removeAttribute('readonly');
-        commentTextarea.focus();
-      });
-      const deleteLink = document.createElement('a');
-      deleteLink.textContent = 'Borrar';
-      deleteLink.classList.add('action-link');
-      deleteLink.addEventListener('click', () => {
-        const shouldDelete = window.confirm('¿Estás seguro de que deseas borrar esta entrada?');
-        if (shouldDelete) {
-          commentContainer.remove();
-        }
-      });
-      editLink.addEventListener('click', () => {
-        isEditing = true;
-        commentTextarea.removeAttribute('readonly');
-        commentTextarea.focus();
-      });
-      deleteLink.addEventListener('click', () => {
-        const shouldDelete = window.confirm('¿Estás seguro de que deseas borrar este comentario?');
-        if (shouldDelete) {
-          commentContainer.remove();
-        }
-      });
-      btnLike.addEventListener('click', () => {
-        if (!isLiking) {
-          btnLike.setAttribute('src', './assets/like.png');
-          likes += 1;
-          isLiking = true;
-        } else {
-          btnLike.setAttribute('src', './assets/unLike.png');
-          likes -= 1;
-          isLiking = false;
-        }
-        console.log(isLiking);
-        sumLikes.innerHTML = likes;
-      });
-      const likeContainer = document.createElement('div');
-      likeContainer.setAttribute('class', 'liking');
-      likeContainer.appendChild(btnLike);
-      likeContainer.appendChild(sumLikes);
-      const commentButtonsDiv = document.createElement('div');
-      commentButtonsDiv.setAttribute('class', 'commentButtons');
-      commentButtonsDiv.appendChild(editLink);
-      commentButtonsDiv.appendChild(deleteLink);
-      commentContainer.appendChild(commentButtonsDiv);
-      commentContainer.appendChild(commentTextarea);
-      commentContainer.appendChild(likeContainer);
-      commentList.appendChild(commentContainer);
-      commentList.classList.add('visible');
-      commentList.style.display = 'block';
-      commentInput.value = '';
-      // mandar post a DB (userID, icon, idLikes, post, time)
-      nameLike = '';
-      createPost(selectedUserName, selectedImage, nameLike, commentText);
-    }
-  }); */
 
   // commentList.appendChild(olderPost);
   sendButton.addEventListener('click', () => {

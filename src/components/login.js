@@ -79,13 +79,13 @@ function login() {
     autenticacionUser(email, password)
       .then((successMessage) => {
         window.location.href = '/timeLine';
-        console.log(successMessage);
+        // console.log(successMessage);
       })
       .catch((error) => {
         if (error.code === 'auth/user-not-found') {
           alert('El correo electronico ingresado no esta registrado.');
         } else {
-          console.log(error);
+          // console.log(error);
         }
       });
   });

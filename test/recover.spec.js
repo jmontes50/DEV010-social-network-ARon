@@ -3,15 +3,16 @@ import recover from '../src/components/recover';
 
 // Primero verificamos si es una función.
 describe('recover', () => {
-    it('verificamos que sea una función', () => {
-      expect(typeof recover).toBe('function');
-    });
+  it('verificamos que sea una función', () => {
+    expect(typeof recover).toBe('function');
+  });
 
-// Mock para firebase
-jest.mock('firebase/auth', () => ({
-  getAuth: jest.fn(),
-  sendPasswordResetEmail: jest.fn(),
-}));
+  // Mock para firebase
+  jest.mock('firebase/auth', () => ({
+    getAuth: jest.fn(),
+    sendPasswordResetEmail: jest.fn(),
+  }));
+});
 
 describe('recover', () => {
   it('muestra mensaje de éxito al enviar email', () => {

@@ -59,8 +59,6 @@ Tamaños disponibles:
 
 ![vistas de la app](src/img/visuals.jpg)
 
-En esta parte, mostrare capturas de pantalla de las vistas y los diagramas de flujo de los procesos. 
-
 * _Login_ con Firebase:
   -  Creación de cuenta de acceso y autenticación con cuenta de correo y contraseña, y también con una cuenta de Google.
 

@@ -1,10 +1,11 @@
+import { doc, deleteDoc } from 'firebase/firestore';
 import eliminarPost from '../src/components/firestoreDelete';
-import { doc, deleteDoc } from '../src/components/firebase/firestore';
 import { db } from '../src/components/firebase';
 
 jest.mock('firebase/firestore', () => ({
   doc: jest.fn(),
   deleteDoc: jest.fn(),
+  getFirestore: jest.fn(),
 }));
 
 describe('eliminarPost', () => {
@@ -45,3 +46,45 @@ describe('eliminarPost', () => {
     expect(console.error).toHaveBeenCalledWith('Error al eliminar el post:', expect.any(Error));
   });
 });
+
+/*
+
+describe('eliminarPost', () => {
+  it('debería eliminar un post correctamente', async () => {
+    const docID = 'tu-id-de-documento';
+
+    // Simula la referencia del documento y la función deleteDoc
+    const postRefMock = jest.fn();
+    const deleteDocMock = jest.fn().mockResolvedValue();
+
+    // Asigna los mocks a las funciones correspondientes
+    doc.mockReturnValue(postRefMock);
+    deleteDoc.mockReturnValue(deleteDocMock);
+
+    // Utiliza async/await para esperar la resolución de la promesa
+    await eliminarPost(docID);
+
+    // Verifica que se llamó a las funciones de Firebase con los argumentos adecuados
+    expect(doc).toHaveBeenCalledWith(db, 'dataBase2', docID);
+    expect(deleteDoc).toHaveBeenCalledWith(postRefMock);
+
+    // Verifica que se haya mostrado el mensaje de éxito
+    expect(console.log).toHaveBeenCalledWith('Post eliminado correctamente');
+  });
+
+  it('debería manejar errores al eliminar un post', async () => {
+    const docID = 'tu-id-de-documento';
+
+    // Simula un error al eliminar el documento
+    const deleteDocMock = jest.fn().mockRejectedValue(new Error('Error al eliminar el post'));
+
+    // Asigna el mock a la función deleteDoc
+    deleteDoc.mockReturnValue(deleteDocMock);
+
+    // Utiliza async/await para esperar la resolución de la promesa y manejar el rechazo
+    await expect(eliminarPost(docID)).rejects.toThrow('Error al eliminar el post');
+
+    // Verifica que se haya mostrado el mensaje de error
+    expect(console.error).toHaveBeenCalledWith('Error al eliminar el post:', expect.any(Error));
+  });
+}); */

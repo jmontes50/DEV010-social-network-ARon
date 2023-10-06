@@ -123,7 +123,6 @@ function postCreate(userImage, userName, numberLikes, postText, idPost, isLiking
   liPost.appendChild(containerButtons);
   liPost.appendChild(commentTextarea);
   liPost.appendChild(containerLikes);
-  // liPost.appendChild(deleteLink);
 
   return liPost;
 }

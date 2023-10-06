@@ -64,9 +64,8 @@ function TimeLine() {
     savePost(selectedUserName, selectedImage, commentText);
     const likes = 0;
     const postLi = postCreate(selectedImage, selectedUserName, likes, commentText);
-    commentList.prepend(postLi);
+    commentList.prepend(postLi); // USO DE PREPEND PARA PONERLO AL INICIO DE LA LISTA
     commentInput.value = '';
-    // commentList.appendChild(postLi);
   });
 
   window.addEventListener('DOMContentLoaded', () => {

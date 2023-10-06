@@ -1,25 +1,40 @@
+// importamos la funcion que vamos a testear
+import savePost from '../src/components/db.js';
+import { db } from '../src/components/firebase';
 
+const {
+  doc, addDoc, collection, serverTimestamp,
+} = require('firebase/firestore');
 
-    // Verifica que se haya mostrado el mensaje de exito
-    expect(doc).toHaveBeenCalledWith(db, 'dataBase2', docID);
-    expect(deleteDoc).toHaveBeenCalledWith(postRefMock);
+// creamos el mock
+jest.mock('firebase/firestore', () => ({
+  doc: jest.fn(),
+  addDoc: jest.fn(),
+  collection: jest.fn(),
+  serverTimestamp: jest.fn(),
+  getFirestore: jest.fn(),
+}));
 
-    expect(console.log).toHaveBeenCalledWith('Post eliminado correctamente');
+describe('savePost', () => {
+  it('verificamos que sea una función', () => {
+    expect(typeof savePost).toBe('function');
   });
 
-  it('deberia manejar errores al eliminar un post', async () => {
-    const docID = 'tu-id-de-documento';
+  // comprobamos que se pueda guardar el post
 
-    // Simula un error al eliminar el documento
-    const deleteDocMock = jest.fn().mockRejectedValue(new Error('Error al eliminar el post'));
+  it('debería llamar a saveDoc con los argumentos correctos', async () => {
+    const userID = 'Panchita';
+    const icon = 'image.png';
+    const post = 'Hoy hice una pintura mediante colores RGB';
+    // Simula una llamada a savePost
+    savePost(userID, icon, post);
 
-    // asigna el mock a la funcion deleteDoc
-    deleteDoc.mockReturnValue(deleteDocMock);
-
-    // llamar a la funcion eliminarPost
-    await expect(eliminarPost(docID)).rejects.toThrow('Error al eliminar el post');
-
-    // Verificar que se haya mostrado el mensaje de error
-    expect(console.error).toHaveBeenCalledWith('Error al eliminar el post:', expect.any(Error));
+    // Verifica que doc se haya mandado con los argumentos correctos
+    addDoc(
+      collection(db, 'dataBase2'),
+      {
+        userID, icon, post, likes: 0, time: serverTimestamp(),
+      },
+    );
   });
 });

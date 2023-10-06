@@ -2,30 +2,11 @@ import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from './firebase.js';
 
 // mandar post a DB (userID, icon, idLikes, post, time)
-/* const savePost = (userID, icon, post) => new Promise((resolve, reject) => {
-  addDoc(
-    collection(db, 'dataBase2'),
-    {
-      userID,
-      icon,
-      post,
-      likes: 0,
-      time: serverTimestamp(),
-    },
-    () => {
-      resolve('Post creado exitosamente');
-    },
-    (err) => {
-      reject(err);
-    },
-  );
-}); */
-// mandar post a DB (userID, icon, idLikes, post, time)
 const savePost = (userID, icon, post) => {
   addDoc(
     collection(db, 'dataBase2'),
     {
-      userID, icon, post, time: serverTimestamp(),
+      userID, icon, post, likes: 0, time: serverTimestamp(),
     },
   );
   return 'Post creado';

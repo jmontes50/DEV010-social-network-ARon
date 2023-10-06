@@ -144,6 +144,7 @@ Se ejecutó en un total de 6 sprints de una semana cada uno. Totalmente en vanil
 
 El boiler plate quedó de la siguiente forma:
 
+```text
 ./
 ├── .eslintrc 
 ├── .gitignore
@@ -194,6 +195,8 @@ El boiler plate quedó de la siguiente forma:
 	 ├── .delete.spec.js
 	 ├── .preferences.spec.js
 	 ├── .recover.spec.js
+
+   ```
 
 *** Nota: Las carpetas señaladas con "..." contienen imágenes o archivos autogenerados por las instalaciones del proyecto que no fueron modificados por las programadoras. 
 

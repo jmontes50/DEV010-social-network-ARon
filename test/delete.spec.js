@@ -12,7 +12,7 @@ describe('eliminarPost', () => {
   it('deberia eliminar un post correctamente', async () => {
     const docID = 'tu-id-de-documento';
 
-    // simular la referencia dle documento y la funcion deleteDoc
+    // simular la referencia del documento y la funcion deleteDoc
     const postRefMock = jest.fn();
     const deleteDocMock = jest.fn().mockResolvedValue();
 

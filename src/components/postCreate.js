@@ -74,10 +74,10 @@ function postCreate(userImage, userName, numberLikes, postText, idPost, isLiking
         eliminarPost(postId)
           .then(() => {
             liPost.remove();
-            console.log('Post eliminado correctamente');
+            // console.log('Post eliminado correctamente');
           })
           .catch((error) => {
-            console.error('Error al eliminar el post:', error);
+            // console.error('Error al eliminar el post:', error);
           });
       }
     }
@@ -123,8 +123,7 @@ function postCreate(userImage, userName, numberLikes, postText, idPost, isLiking
   liPost.appendChild(containerButtons);
   liPost.appendChild(commentTextarea);
   liPost.appendChild(containerLikes);
-  //liPost.appendChild(deleteLink);
-
+  // liPost.appendChild(deleteLink);
 
   return liPost;
 }

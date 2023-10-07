@@ -1,4 +1,4 @@
-import { doc, updateDoc, arrayUnion } from 'firebase/firestore';
+/* import { doc, updateDoc, arrayUnion } from 'firebase/firestore';
 import { db } from './firebase.js';
 
 // mandar post a DB (userID, icon, idLikes, post, time)
@@ -33,4 +33,4 @@ const createPost = (userID, icon, idLikes, post) => {
     .catch((error) => console.log(error));
 }; */
 
-export default createPost;
+/* export default createPost; */

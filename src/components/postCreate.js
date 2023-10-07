@@ -71,14 +71,11 @@ function postCreate(userImage, userName, numberLikes, postText, idPost, isLiking
       const shouldDelete = window.confirm('¿Estás seguro de que deseas borrar este comentario?');
       if (shouldDelete) {
         postId = liPost.id;
-        eliminarPost(postId)
-          .then(() => {
-            liPost.remove();
-            console.log('Post eliminado correctamente');
-          })
-          .catch((error) => {
-            console.error('Error al eliminar el post:', error);
-          });
+        eliminarPost(postId, (message) => {
+          // Esta función se ejecutará después de eliminar el post
+          liPost.remove();
+          console.log(message); // Mensaje del éxito
+        });
       }
     }
   });

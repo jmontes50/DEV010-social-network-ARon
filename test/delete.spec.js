@@ -16,9 +16,9 @@ describe('eliminarPost', () => {
     // aca simulamos el callback
     const callbackMock = jest.fn();
 
-    // simular la referencia dle documento y la funcion deleteDoc
-    const postRefMock = doc(db, 'dataBase2', docID);
-    // const deleteDocMock = jest.fn().mockResolvedValue();
+    // simular la referencia del documento y la funcion deleteDoc
+    const postRefMock = jest.fn();
+    const deleteDocMock = jest.fn().mockResolvedValue();
 
     // asignar los mocks a las funciones correspondientes
     doc.mockReturnValue(postRefMock);

@@ -9,7 +9,7 @@ function preferences() {
   const prefer = document.createElement('section');
 
   prefer.innerHTML = `<div id="nameInputDiv">
-    <h2><label for="userName">¿Quién eres?</label></h2>
+    <h2><label for="userName">¿Cómo te llaman?</label></h2>
     <input type="text" id="userName" placeholder="Tu Nombre">
     </div>
     <article id="userType">

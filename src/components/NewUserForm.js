@@ -1,9 +1,13 @@
 import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
+import logo from '../img/logo.png';
+import shutEye from '../assets/shutEye.png';
+import openEye from '../assets/openEye.png';
 
 function newUser() {
   const newUserForm = document.createElement('section');
 
-  newUserForm.innerHTML = `<img id="logo" src= "img/logo.png">
+  // btnShowPass.setAttribute('style', `background-image: url(${eyeShut})`);
+  newUserForm.innerHTML = `<img id="logo" src= "${logo}">
    <h2 id="title">Nuevos usuarios</h2>
     <form id="newUserUl">
         <ul id="register">
@@ -29,11 +33,13 @@ function newUser() {
       if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
         repeatPasswordInput.type = 'text';
-        btn.style.backgroundImage = 'url(assets/openEye.png)';
+        btn.setAttribute('style', `background-image: url(${openEye})`);
+        // btn.style.backgroundImage = 'url(assets/openEye.png)';
       } else {
         passwordInput.type = 'password';
         repeatPasswordInput.type = 'password';
-        btn.style.backgroundImage = 'url(assets/shutEye.png)';
+        btn.setAttribute('style', `background-image: url(${shutEye})`);
+        // btn.style.backgroundImage = 'url(assets/shutEye.png)';
       }
     });
   });

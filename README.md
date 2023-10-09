@@ -202,8 +202,24 @@ El boiler plate quedó de la siguiente forma:
 
 ### 6. Resultado de los test Jest.
 
-Se nos exigía que los tests unitarios debían cubrir un mínimo del 70% de _statements_, _functions_, _lines_, y _branches_.
+Se nos exigía que los tests unitarios debían cubrir las funcionalides relacionadas a crear, editar, y borrar los post. 
 
+```text
+---------------|---------|----------|---------|---------|-------------------
+File           | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+---------------|---------|----------|---------|---------|-------------------
+All files      |     100 |      100 |     100 |     100 |                   
+ db.js         |     100 |      100 |     100 |     100 |                   
+ firebase.js   |     100 |      100 |     100 |     100 |                   
+ ...eDelete.js |     100 |      100 |     100 |     100 |                   
+ ...oreEdit.js |     100 |      100 |     100 |     100 |                   
+---------------|---------|----------|---------|---------|-------------------
+Test Suites: 0 failed, 7 passed, 7 total
+Tests:       0 failed, 11 passed, 11 total
+Snapshots:   0 total
+Time:        4.839 s
+Ran all test suites.
+ ```
 
 ### 7.Testeo con usuarios UX.
 

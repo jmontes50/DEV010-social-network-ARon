@@ -1,7 +1,6 @@
 import {
   getAuth, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword,
 } from 'firebase/auth';
-
 import colectiveIsCool from '../assets/Colective_isCool.png';
 import eyeShut from '../assets/shutEye.png';
 import eyeOpen from '../assets/openEye.png';
@@ -14,11 +13,6 @@ function login() {
   logo.setAttribute('src', colectiveIsCool);
   logo.setAttribute('alt', 'Colective_isCool');
   logo.setAttribute('id', 'logo');
-
-  /* const logoGoogle = document.createElement('img');
-  logoGoogle.setAttribute('src', '/assets/logo-google.png');
-  logoGoogle.setAttribute('alt', 'logo-google');
-  logoGoogle.setAttribute('id', 'logo-google'); */
 
   const section = document.createElement('section');
   const titleLogin = document.createElement('h2');
@@ -120,7 +114,6 @@ function login() {
   const googleSignInOption = document.createElement('div');
   const googleSignInLink = document.createElement('img');
   googleSignInLink.setAttribute('id', 'googleSignInLink');
-  
   googleSignInLink.setAttribute('src', darkGoogle); // poner url
   googleSignInLink.setAttribute('alt', 'Google Sign-In');
   googleSignInOption.appendChild(googleSignInLink);

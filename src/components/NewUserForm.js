@@ -6,7 +6,6 @@ import openEye from '../assets/openEye.png';
 function newUser() {
   const newUserForm = document.createElement('section');
 
-  // btnShowPass.setAttribute('style', `background-image: url(${eyeShut})`);
   newUserForm.innerHTML = `<img id="logo" src= "${logo}">
    <h2 id="title">Nuevos usuarios</h2>
     <form id="newUserUl">
@@ -34,12 +33,10 @@ function newUser() {
         passwordInput.type = 'text';
         repeatPasswordInput.type = 'text';
         btn.setAttribute('style', `background-image: url(${openEye})`);
-        // btn.style.backgroundImage = 'url(assets/openEye.png)';
       } else {
         passwordInput.type = 'password';
         repeatPasswordInput.type = 'password';
         btn.setAttribute('style', `background-image: url(${shutEye})`);
-        // btn.style.backgroundImage = 'url(assets/shutEye.png)';
       }
     });
   });

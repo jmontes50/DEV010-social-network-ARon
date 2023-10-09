@@ -1,6 +1,8 @@
 import editPost from './firestoreEdit';
 import likes from './likes.js';
 import eliminarPost from './firestoreDelete';
+import like from '../assets/like.png';
+import unlike from '../assets/unlike.png';
 
 const selectedUserName = localStorage.getItem('selectedUserName');
 
@@ -89,9 +91,9 @@ function postCreate(userImage, userName, numberLikes, postText, idPost, isLiking
   btnLike.setAttribute('id', idPost);
   btnLike.classList.add('btnLike');
   if (isLiking) {
-    btnLike.setAttribute('src', './assets/like.png');
+    btnLike.setAttribute('src', like);
   } else {
-    btnLike.setAttribute('src', './assets/unlike.png');
+    btnLike.setAttribute('src', unlike);
   }
   const sumLikes = document.createElement('span');
   sumLikes.setAttribute('id', 'sumLikes');
@@ -101,14 +103,14 @@ function postCreate(userImage, userName, numberLikes, postText, idPost, isLiking
   btnLike.addEventListener('click', () => {
     if (!isLike) {
       if (selectedUserName !== userName) {
-        btnLike.setAttribute('src', './assets/like.png');
+        btnLike.setAttribute('src', like);
         isLike = true;
         lkNumber = sumLikes.textContent;
         const newLikes = likes(btnLike.id, lkNumber, isLike, selectedUserName);
         sumLikes.innerHTML = newLikes;
       }
     } else {
-      btnLike.setAttribute('src', './assets/unLike.png');
+      btnLike.setAttribute('src', unlike);
       isLike = false;
       lkNumber = sumLikes.textContent;
       const newLikes = likes(btnLike.id, lkNumber, isLike, selectedUserName);

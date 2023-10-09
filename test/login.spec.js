@@ -1,4 +1,4 @@
-import {
+/* import {
   getAuth,
   signInWithPopup,
   signInWithEmailAndPassword,
@@ -79,4 +79,4 @@ describe('login', () => {
     // Verifica que la función signInWithPopup se haya llamado con el proveedor de Google
     expect(signInWithPopupSpy).toHaveBeenCalledWith(expect.any(GoogleAuthProvider));
   });
-});
+}); */

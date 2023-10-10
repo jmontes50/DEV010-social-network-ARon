@@ -15,11 +15,6 @@ function login() {
   logo.setAttribute('alt', 'Colective_isCool');
   logo.setAttribute('id', 'logo');
 
-  /* const logoGoogle = document.createElement('img');
-  logoGoogle.setAttribute('src', '/assets/logo-google.png');
-  logoGoogle.setAttribute('alt', 'logo-google');
-  logoGoogle.setAttribute('id', 'logo-google'); */
-
   const section = document.createElement('section');
   const titleLogin = document.createElement('h2');
   titleLogin.textContent = 'Inicio de sesión';

@@ -22,8 +22,10 @@ const routes = [
 const defaultRoute = '/';
 
 function navigateTo(hash) {
+  console.log({ hash });
   const route = routes.find((routeFind) => routeFind.path === hash);
-
+  console.log({ route });
+  console.log("com", route.component);
   if (route && route.component) {
     window.history.pushState(
       {},

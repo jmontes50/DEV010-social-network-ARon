@@ -15,7 +15,7 @@ export default defineConfig(({ command }) => {
       // para o nome/url do seu repositório
       // https://vitejs.dev/guide/static-deploy.html#github-pages
       // ejemplo base: '/social-network/',
-      // base: '/',
+      base: '/jmontes50/DEV010-social-network-ARon/',
       build: {
         minify: false,
         rollupOptions: {

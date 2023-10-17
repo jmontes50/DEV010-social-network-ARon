@@ -7,6 +7,8 @@ import newUser from './components/NewUserForm.js';
 import preferences from './components/preferences.js';
 import timeLine from './components/TimeLine.js';
 
+console.log("LOADED")
+
 const root = document.getElementById('root');
 
 const routes = [

@@ -1,0 +1,657 @@
+/*Generales*/
+
+*{
+    font-family: 'Kiwi Maru', serif;
+}
+
+body{
+    background: linear-gradient(#5CB3C1, #01587A);
+    min-height: auto;
+}
+
+
+main{
+    background-color: #fefefe;
+    border-radius: 20px;
+    margin: 2rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;/* para alinear elmentos al centro de la pagina*/
+}
+
+h2{
+    text-align: center;
+    color: #01587A;
+    font-size: medium;
+}
+
+#root{
+    display:flex;
+    justify-content: center;
+    align-content: center;
+}
+
+/*De las pantallas de login, inscripcion, etc*/
+/*inscripción*/
+
+#logo{
+    width: 55%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-left: 22%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+li{
+    display: flex;
+    justify-content: center;
+    margin-top: 0rem;
+    align-items: center;
+    
+}
+
+input{
+    width: 75%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-size: small;
+    margin:2%;
+    background-color:#fefefe;
+    border-color: #01587A;
+    color:#01587A;
+}
+
+#register {
+    list-style-type:none;
+    padding-inline-start:0%;
+   
+}
+
+
+button{
+    display:flex;
+    text-align: center;
+    border-radius: 15px;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    background: linear-gradient(#5CB3C1, #01587A);
+    color:#fefefe;
+    padding: 0.5rem; 
+    border-color: #0587ba;    
+}
+
+button:active{
+    background: linear-gradient(#f2dfa2,#f3ba00);
+    border-color: #ffc400; 
+    color:#fefefe;
+}
+
+/*preferences*/
+
+#logo2{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+    margin-left: 30%;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+#pref{
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    margin-bottom: 0rem;
+}
+
+.liPref{
+    margin-top: -2rem;
+}
+.ask{
+    background:#e1e8ec;
+    color:#01587A;
+    text-align: center;
+    padding:1rem;
+    border-radius:29px;
+    font-size: smaller;
+    display: flex;
+    flex-direction: row;
+    border-style: solid;
+    border-color: #aac3cd;
+    width: 100%;
+}
+.ask:hover{
+    background-color: #83bac2;
+}
+
+button.ask:active{
+    background-color: #5CB3C1;
+    transform: translateY(2px) translateX(2px);
+}
+
+.options {
+    padding-left: 1rem;
+}
+
+.icon {
+    display:flex;
+    margin-top:2px;
+    margin-left:2px;
+    width:40px;
+    height:40px;
+}
+
+#savePreferences{
+    justify-content: center;
+    display:initial;
+    margin-top:-1rem;
+}
+
+/*Login*/
+
+.login-title{
+font-size: large;
+
+}
+
+
+.forgot-password{
+    font-size: small;
+    margin-left: 6%;
+    margin-bottom: 2rem;
+
+}
+
+.sign-up{
+    font-size: small;
+    margin-right: 6%;
+    margin-bottom: 2rem;
+   
+}
+
+.login-button{
+  
+  margin: 0 auto; /* Centrar horizontalmente el botón en su contenedor*/ 
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  
+} 
+
+.buttonsShowHidePassword{
+    border: 0px;
+    width: 24px;
+    height: 24px;
+    margin-top:-35px;
+    margin-left: 80%;
+    top:0;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 1%;
+}
+
+#googleSignInLink{
+    padding-inline: 1rem;
+    margin-bottom: 2rem; 
+    width: 30%;
+ }
+
+.eye{
+    border:none;
+    margin-top: -2px;
+    margin-bottom: 2px;
+    width: 24px;
+    height: 24px;
+    margin-left: -21px;
+    position: relative;
+    z-index: 2;
+    background-image: url(./assets/openEye.png);
+}
+
+.eye:active{
+    background-image: url(./assets/shutEye.png);
+}
+
+#btnSendEmail{
+    margin-top: 2rem;
+    margin-left: 29%;
+    margin-bottom: 2rem;
+}
+
+.buttonRecover{
+    margin-top: 3rem;
+    margin-left: 23%;
+    margin-bottom: 3rem;
+}
+
+.logoRecover{
+    width: 56%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+    margin-left: 20%;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+#imgError{
+    width: 50%;
+    padding:20%;
+}
+
+h3{
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    color:#01587A;
+}
+
+/*TimeLine*/
+.timeLineStyle{
+    background-color: #99d8dd;
+    min-height: 600px;
+    min-width: 100%;
+    border-radius: 20px;
+    padding:10px;
+}
+
+.timeLineLogo{
+    display: flex;
+    height: 5%; 
+    margin-left: 28px;
+    margin-top: 5px;
+    margin-bottom: 100px;
+    margin-right: 0px;
+}
+
+#btnClose{
+   display:flex;
+   width: 40px;
+   margin-left: 94%;
+   margin-top: -170px;
+   padding-bottom: 32px;
+}
+
+.postSection{
+    background-color: #e1e8ec;
+    min-height: 600px;
+    min-width: 80%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 20px;
+}
+
+.user-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-right: 86%;
+}
+.user-image{
+   width: 2rem;
+   height: 2rem;
+   margin-right:0.8rem;
+   margin-top: 5px;
+}
+.user-name{
+    color: black;
+    font-size: x-large;
+    padding-top:0px;
+    margin-top: 0px;
+
+}
+
+#commentInput {
+    width: 95%;
+    border-radius: 10px; 
+    font-size: 14px; 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+   padding: 10px;
+    border: none;
+    margin-bottom: 10px;
+}
+
+#sendbutton{
+
+    align-self: flex-end;
+}
+
+#commentList{
+   display:flex;
+   list-style-type: none;
+   width: 90%;
+   justify-content: center;
+   flex-direction: column;
+   margin-right: 6%;
+}
+
+
+.btnLike{
+    width: 40px;
+    height: 40px;
+}
+
+.liking{
+    display: inline;
+}
+
+  /* Estilo para el contenedor de comentarios */
+  .commentContainer {
+    display:flex;
+    background-color: #c1d9e0;
+    width: 100%;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    border-radius: 10px;
+   padding-left: 1rem;
+   padding-right: 1rem;
+   justify-content: left;
+  }
+  
+  .userImagePost{
+    width: 2rem;
+    height: 2rem;
+    margin: 12px 8px 8px 8px;
+ }
+
+.userNamePost {
+     padding-top: 0px;
+     margin-bottom: 0px;
+     margin-top: 0px;
+     font-size: x-large;
+    }
+    
+    .postButtons{
+     margin-left: 76%;
+    }
+  
+    .likeArea{
+        width: 10%;
+        margin-left:90%;
+        margin-bottom: 1rem;
+        display:flex;
+        flex-direction: row;
+    }
+  /* Estilo para el área de comentario */
+  .commentTextarea {
+    padding: 5px;
+    border-radius: 10px;
+    width: 90%;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+    margin-left: 5%;
+    margin-top: 0.5rem;
+    background-color:#c1d9e0;
+    border:none;
+
+  }
+
+  #sumLikes{
+    font-size:x-large;
+  }
+
+  .action-link {
+    background: none;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    color:#01587A; 
+    transition: transform 0.2s;
+    margin-right: 8px
+  }
+  
+  .action-link:hover {
+    text-decoration: none; 
+    color:#ffc400; 
+    transform: scale(1.1); 
+  }
+
+/*Cambios Responsive */
+/*Escritorio*/
+
+@media (max-width: 1275px) { 
+
+    .postButtons {
+        margin-left: 71%;
+      }
+}
+
+@media (max-width: 1215px) { 
+
+    .postButtons {
+        margin-left: 73%;
+      }
+}
+
+@media (max-width: 1200px) { 
+
+    .postButtons {
+        margin-left: 71%;
+      }
+}
+
+@media (max-width: 1110px) { 
+
+    .postButtons {
+        margin-left: 67%;
+      }
+}
+/*Tablet*/
+
+@media (max-width: 1020px) { 
+
+    .postButtons {
+        margin-left: 68%;
+      }
+      .user-container {
+        margin-right: 83%;
+      }   
+}
+
+@media (max-width: 1010px) { 
+
+    .postButtons {
+        margin-left: 65%;
+      }
+}
+
+@media (max-width: 935px) { 
+
+    .postButtons {
+        margin-left: 62%;
+      }
+}
+
+@media (max-width: 870px) { 
+
+    .postButtons {
+        margin-left: 59%;
+      }
+}
+
+@media (max-width: 815px) { 
+
+    .postButtons {
+        margin-left: 56%;
+      }
+
+      .user-container {
+        margin-right: 80%;
+      }
+}
+
+/*Mobile*/
+@media (max-width: 770px) {
+    .postButtons {
+        margin-left: 54%;
+      }
+
+      #commentList{
+        margin-right: 7%;
+     }
+}
+
+@media (max-width: 740px) {
+    .postButtons {
+        margin-left: 51%;
+      }
+}
+@media (max-width: 670px) {
+    .postButtons {
+        margin-left: 48%;
+      }
+      .user-container {
+        margin-right: 75%;
+      }   
+      #commentList{
+        margin-right: 8%;
+     }
+     .likeArea {
+        margin-left: 88%;
+      }
+
+}
+
+@media (max-width: 620px) {
+    .postButtons {
+        margin-left: 44%;
+      }
+
+    #btnClose{
+        margin-left: 90%;
+    }
+}
+
+@media (max-width: 575px) {
+    .postButtons {
+        margin-left: 39%;
+      }
+
+      .user-container {
+        margin-right: 67%;
+      }  
+}
+@media (max-width: 550px) {
+    .postButtons {
+        margin-left: 32%;
+      }
+      #commentList{
+        margin-right: 9%;
+     }
+     .likeArea {
+        margin-left: 83%;
+      }
+      .btnLike {
+        width: 35px;
+        height: 35px;
+      }
+}
+
+@media (max-width: 495px) {
+    .postButtons {
+        margin-left: 23%;
+      }
+}
+
+@media (max-width: 450px) {
+    .postButtons {
+        margin-left: 18%;
+      }
+
+      #btnClose{
+        margin-left: 88%;
+    }
+}
+@media screen and (max-width: 360px) {
+
+    body{
+    min-height: 600px;
+    }
+
+    .forgot-password{
+        font-size: x-small;
+    }
+    
+    .sign-up{
+        font-size: x-small;
+        margin-right: 2%;
+    }
+
+    .buttonsShowHidePassword{
+        margin-top:-31px;
+        margin-left: 77%;
+    }
+
+    .icon {
+        margin-top:4px;
+    }
+
+    .ask{
+       font-size: x-small;
+    }
+
+    .timeLineLogo{
+        display: flex;
+        height: 3%;
+        margin: 5px;
+        margin-bottom: 122px;
+    }
+
+    .user-container{
+        margin-right: 60%;
+    }
+
+    #btnClose{
+        width: 10%;
+        margin-left: 84%;
+        margin-top: -179px;
+        margin-bottom: 35px;
+        padding-bottom: 0px;
+    }
+
+    /*TimeLine*/
+
+    #commentList{
+        margin-right: 15%;
+    }
+    .commentContainer{
+        width:105%;
+    }
+    .commentTextarea{
+        margin-top: 0.2rem;
+    }
+     .user-name{
+        font-size: small;
+        padding-right: 15px;
+    }
+    .userImagePost{
+        margin: 0rem;
+        margin-right:0.5rem;
+    }
+    
+     .postButtons{
+        margin-left: 1rem;
+        margin-top: 3px;
+    }
+    .action-link {
+     margin-right: 0.5rem;
+     font-size: x-small;
+    }
+    .btnLike {
+        width: 24px;
+        height: 24px;
+      }
+
+    #sumLikes{
+      font-size:large;
+    }
+}
+
